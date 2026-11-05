@@ -1,0 +1,13 @@
+id,location,original_claim,category,action,replacement
+A1,"Section 7, finding F5",No other West African language has a denser safety literature,"""no other"" claim",softened with knowledge qualifier,"To the best of our knowledge, no other West African language has a denser safety literature"
+A2,"Section 11, conclusion",the densest safety-literature cluster of any West African language,"""densest"" claim",softened + qualifier,"to the best of our knowledge, one of the densest concentrations of safety literature among West African languages"
+A3,Section 6.6,Reasoning remains the weakest frontier,"""weakest"" claim",scoped to the evidence gathered,Reasoning is the weakest frontier in the evidence gathered here
+A4,"Section 7, finding F3 heading",Evaluation is the weakest link,"""weakest"" claim",softened,Evaluation validity is the most fragile link
+A5,Section 6.8,CIRAL provides the first test collection for Hausa cross-lingual retrieval,"""first"" claim",attributed + knowledge qualifier,"CIRAL provides what its authors describe, and to the best of our knowledge is, the first test collection for Hausa cross-lingual retrieval"
+A6,Section 6.1,HausaMT v1.0 established the first neural translation set-up for the pair,"""first"" claim",softened to an early instance,HausaMT v1.0 provided an early neural translation set-up for the pair
+A7,Section 6.5,the most distinctive sub-area of Hausa NLP anywhere,superlative,softened,stands out as a distinctive sub-area of Hausa NLP
+A8,Section 5.3,Hausa is unusually well served with vision-language data,comparative claim,softened,Hausa is comparatively well served with vision-language data
+A9,"Section 1, contributions",no earlier review of Hausa covers the large-language-model period,implicit uniqueness,"kept with ""To our knowledge"" qualifier","kept, qualified"
+A10,Section 6.6,The shared-task record tempers enthusiasm,rhetorical (not an exclusivity claim),kept,kept
+A11,"Sections 1, 11",a first-class citizen of artificial intelligence,rhetorical (not an exclusivity claim),kept,kept
+A12,"Abstract, Section 1",first-language / second-language speakers,"linguistic term, not a novelty claim",kept,kept

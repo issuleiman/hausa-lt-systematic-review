@@ -1,0 +1,16 @@
+stage,item,count,basis
+identification,"version-1 corpus (quota-structured, 8 areas)",250,corpus_v1.xlsx
+screening,records assessed against scope criteria,250,all v1 records
+screening,set aside at scope screening,221,203 outside scope (E1) + 16 Hausa-area superseded + 2 overlapping (E3)
+screening,direct-contribution core retained,29,29 = 250 - 221
+completion,completion register compiled,159,systematic venue and community monitoring
+completion,already held and verified (E3),40,159 - 119
+completion,reports sought for retrieval,119,119 = 159 - 40
+retrieval,reports not retrieved (E2),27,publisher blocks or retrieval failed verification; no open-access mirror
+retrieval,reports retrieved,92,92 = 119 - 27
+eligibility,reports assessed for eligibility,92,full texts read against I1-I4
+eligibility,excluded at full text (E1),15,no Hausa-specific content in extractable text
+included,studies added by retrieval,77,77 = 92 - 15
+included,studies contributed by the completion pass,124,77 retrieved + 47 already verified outside v1
+included,studies included in the review (version 2),153,29 (v1 core) + 124 (completion)
+included,resources catalogued in parallel,41,resource register R-01 to R-41

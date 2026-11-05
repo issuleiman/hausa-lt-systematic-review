@@ -1,0 +1,386 @@
+\documentclass[sn-basic,pdflatex]{sn-jnl}
+% --- sn-jnl compatibility with the local TeX distribution (TeX Live 2023) ---
+\usepackage{amsmath}
+\usepackage{geometry}
+\makeatletter
+\newskip\footinsA
+\providecommand{\SetFootnoteHook}[1]{}%
+\providecommand{\DeclareNewFootnote}[2][]{}%
+\providecommand{\RemoveMarkers}{}%
+\makeatother
+\usepackage{xcolor}
+\definecolor{artcatboxgray}{cmyk}{0.0,0.0,0.0,0.30}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs,longtable,makecell}
+\usepackage{graphicx}
+\input{stats_fragments}
+\input{tables_gen}
+
+\begin{document}
+
+\title{Hausa Language Technologies in the Age of Artificial Intelligence:\\ A Systematic Review of Resources, Applications, Challenges, and Research Gaps}
+
+\author*[1]{\fnm{Ismail} \sur{Suleiman}}\email{iismail.suleiman\_phd.2026@woxsen.edu.in}
+
+\author[1]{\fnm{Monday Jubrin} \sur{Abdullahi}}\email{abdullahi.monday@woxsen.edu.in}
+
+\affil*[1]{\orgname{Woxsen University}, \orgaddress{\city{Hyderabad}, \state{Telangana}, \country{India}}}
+
+\abstract{Hausa is spoken as a first language by more than 120 million people and as a second language by roughly 80 million more, yet it remains computationally low-resource, and no existing synthesis of its language technology covers the large-language-model period. A breadth-first corpus of 250 publications, assembled against explicit area targets, was reduced by scope screening to the 29 studies that contribute directly to the review's goal; a structured completion register of 159 candidates then contributed 124 further studies after full-text retrieval and verification. The resulting corpus comprises 153 studies and a parallel catalogue of 41 resources; every study was read in full and quality-assessed on a bibliographic rubric. The literature is organised into a nine-block taxonomy spanning foundations, corpora, machine translation and its evaluation, pre-trained models and benchmarks, text processing, speech, safety, multimodal and Ajami-script work, and retrieval and efficiency, and the resource landscape is quantified from 494{,}246 filtered parallel pairs for English--Hausa news translation and 32{,}923 Hausa image descriptions to 1{,}800 hours of Nigerian speech and a 637{,}414-token Ajami corpus. Six findings hold across tasks: the field has become data-centric; transfer from multilingual pre-trained models is the default recipe; evaluation validity is the most fragile link; tokenization imposes a measurable economic penalty; safety and cultural grounding have become core concerns; and community infrastructure determines whether artefacts survive. Ten research gaps, each tied to the evidence that motivates it, close the review with a buildable agenda; all corpus, screening, and extraction data accompany the paper in a public repository.}
+
+\keywords{Hausa \sep low-resource languages \sep language resources \sep machine translation \sep speech recognition \sep systematic review}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+Hausa (Afroasiatic, Chadic) is the most widely spoken member of Africa's third-largest language family and a lingua franca across the Sahel and West Africa. Recent surveys report over 120 million first-language and about 80 million second-language speakers \citep{p005}; other counts, which treat native and fluent use differently, fall in the 80--100 million range \citep{p007}. The language is written in two scripts, the Latin-based \emph{Boko} and the Arabic-derived \emph{Ajami}, and that duality has direct computational consequences \citep{p002}. Demography, in other words, has not translated into resources. Training corpora for Hausa are small and skewed toward news and social media, benchmarks are recent and thin, and the language is routinely classified as low-resource in every survey that touches it.
+
+Yet the last four years have been the most productive in the field's short history. In the body of work reviewed here, 82 of 153 studies (53.6\%) appeared in 2025--2026 alone. Three developments explain the surge. Massively multilingual speech models such as MMS, XLS-R, and Whisper can now be adapted to Hausa with hours rather than thousands of hours of data \citep{p001,p044}. An African wave of benchmarks and pre-trained models (Belebele, IrokoBench, AfriMTEB, AfroXLM-R, InkubaLM, Cheetah, SabiYarn) has made Hausa a standard evaluation point rather than an afterthought \citep{p012,p013,p016,p094,p100,p101,p102}. And commercial large language models can be prompted in Hausa, and increasingly used to elicit Hausa data \citep{p024,p033}. Anyone trying to map this landscape today must piece it together from ACL-family papers, regional journals, and preprint servers, with no single current synthesis of what exists, what works, and what is missing. This review is our attempt to write that synthesis, and to report it with the transparency expected of a systematic review: a documented corpus-construction procedure, explicit scope criteria, a per-record screening trail, and a quality-assessment step (Section~\ref{sec:provenance}).
+
+\medskip
+\noindent\textbf{Research questions.} Four questions structure the review:
+\begin{itemize}\itemsep2pt
+  \item \textbf{RQ1:} What computational resources exist for Hausa, across text, speech, multimodal, and lexical data, and what are their scale, domain coverage, and access conditions?
+  \item \textbf{RQ2:} What applications have been built for Hausa, with which methods, and what results have been measured?
+  \item \textbf{RQ3:} Which patterns hold across tasks, in methods, evaluation practice, and infrastructure?
+  \item \textbf{RQ4:} Which challenges and research gaps follow from the evidence, and what agenda would address them?
+\end{itemize}
+
+\medskip
+\noindent\textbf{Contributions.}
+\begin{itemize}\itemsep2pt
+  \item \textbf{An up-to-date, task-by-task synthesis} of Hausa language technology, covering 153 studies and 41 resources, each read in full, organised into a nine-block taxonomy (Sections~\ref{sec:taxonomy} and \ref{sec:applications}; RQ1--RQ2).
+  \item \textbf{A quantitative account of the resource landscape} and of the results reported, so that claims about scale and progress rest on numbers rather than impressions (Section~\ref{sec:resources}; RQ1).
+  \item \textbf{Six findings} that hold across tasks, concerning data generation, transfer, evaluation validity, the economics of tokenization, safety, and community infrastructure (Section~\ref{sec:findings}; RQ3).
+  \item \textbf{A gap analysis} of ten open problems, each tied to the evidence that motivates it, with a concrete agenda for closing them (Section~\ref{sec:gaps}; RQ4).
+\end{itemize}
+To our knowledge, no earlier review of Hausa covers the large-language-model period, and none is grounded in the full text of every study it discusses.
+
+\section{Related Surveys and Positioning}\label{sec:related}
+Several prior syntheses partially cover this terrain; none covers it completely (Table~\ref{tab:related}). The systematic literature review of Hausa NLP by \citet{p004} covers 2015--2020, that is, the period before large language models reshaped the field. The HausaNLP survey \citep{p005} remains the canonical status-of-the-field map and is our closest predecessor; we extend it with studies from 2025--2026 that it could not include, and we add a documented screening trail and a quality-assessment step. NaijaNLP \citep{p006} situates Hausa among the low-resource languages of Nigeria but does not go deep on any one of them. The survey of text and speech resources for Hausa and Fongbe \citep{p007} audits availability and quality without synthesising application results. Two continental surveys (on NLP for African languages \citep{p077} and on the broader African NLP landscape \citep{p078}) supply context that we inherit where it bears on Hausa, as do the African ASR systematic review \citep{p043} and a mapping of Africa's speech technology landscape \citep{p042}. The benchmark review of sentiment analysis for African languages \citep{p133} treats a single task family, and the study of AI's pragmatic implications for language and learning \citep{p082} examines societal effects rather than technology. What is missing, and what this review provides, is one synthesis that spans the whole stack for a single language, with every source read in full.
+
+\begin{table}[t]\centering\small
+\caption{Prior syntheses related to Hausa language technology, and what this review adds.}
+\label{tab:related}
+\begin{tabular}{@{}p{0.30\textwidth}p{0.12\textwidth}p{0.48\textwidth}@{}}
+\toprule
+\textbf{Survey} & \textbf{Scope} & \textbf{What this review adds} \\
+\midrule
+Hausa NLP SLR \citep{p004} & Hausa, 2015--2020 & The LLM period (through 2026) and a task-by-task synthesis \\
+HausaNLP \citep{p005} & Hausa, field-wide & 2025--2026 studies, quantitative resource synthesis, documented protocol \\
+NaijaNLP \citep{p006} & Nigerian languages & Hausa-specific depth across all tasks \\
+Hausa/Fongbe resources \citep{p007} & Resource audit & Synthesis of application results, not only availability \\
+African NLP surveys \citep{p077,p078} & Continental & A Hausa-focused taxonomy and gap analysis \\
+African ASR SLR \citep{p043} & African speech & Speech integrated with the full NLP stack \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Methodology}\label{sec:method}
+The corpus construction, screening, and retrieval procedures below were designed so that every step is inspectable and repeatable; the review was not prospectively registered, and every construction, screening, and retrieval decision is logged per record and available for inspection in the accompanying repository (see Data Availability). We flag the absence of prospective registration, and the fact that screening and extraction were carried out by a single reviewer supported by scripted retrieval and text extraction, among the limitations in Section~\ref{sec:threats}.
+
+\subsection{Research questions and protocol}
+The four research questions in Section~\ref{sec:intro} were fixed before screening began, and each maps onto one part of the paper: RQ1 to the resource landscape (Section~\ref{sec:resources}), RQ2 to the application synthesis (Section~\ref{sec:applications}), RQ3 to the cross-cutting findings (Section~\ref{sec:findings}), and RQ4 to the challenges and gaps (Sections~\ref{sec:challenges} and \ref{sec:gaps}). Scope criteria and extraction fields were fixed before screening began and are reproduced without alteration in Sections~\ref{sec:screening}--\ref{sec:completion} and in the repository data files.
+
+\subsection{Corpus construction (version 1)}\label{sec:provenance}
+The evidence base began as a breadth-first mapping of the field. Version~1 (v1) of the corpus, finalised on 1 October 2026, holds \textbf{250 publications} spanning 2011--2026, each recorded with its title, authors, year, thematic area, task, a working insight, access status, and link. The corpus was built against explicit area targets, so that breadth was a design decision rather than an accident of sampling (Table~\ref{tab:v1comp}): Hausa speech and NLP (35), other African-language speech and NLP (35), low-resource and multilingual speech (50), self-supervised and foundation speech models (45), cross-lingual transfer and adaptation (25), evaluation, benchmarks, fairness, and robustness (25), adjacent methods (20), and surveys and tutorials (15). Coverage is concentrated after 2019 (193 of 250 records), with 44 records from 2012--2018 and 13 from earlier years; 218 records are open access and 32 closed access. A distribution check verifying these targets against the achieved counts is part of the v1 artifact and is deposited in the repository.
+
+\begin{table}[!htb]\centering\small
+\caption{Composition of the initial corpus (version 1): 250 publications across eight thematic areas, with the achieved distribution.}
+\label{tab:v1comp}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Thematic area (target = achieved)} & \textbf{Records} \\
+\midrule
+Hausa speech and NLP (35) & 35 \\
+Other African-language speech and NLP (35) & 35 \\
+Low-resource and multilingual speech (50) & 50 \\
+Self-supervised and foundation speech models (45) & 45 \\
+Cross-lingual transfer, adaptation, and fine-tuning (25) & 25 \\
+Evaluation, benchmarks, fairness, and robustness (25) & 25 \\
+Adjacent methods (20) & 20 \\
+Surveys and tutorials (15) & 15 \\
+\midrule
+\textbf{Total} & \textbf{250} \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Year bands}} \\
+\quad 2019--2026 & 193 \\
+\quad 2012--2018 & 44 \\
+\quad pre-2012 & 13 \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Access}} \\
+\quad Open access & 218 \\
+\quad Closed access & 32 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Scope screening}\label{sec:screening}
+Version~1 was deliberately broad, and its purpose was to be reduced. The review's goal is Hausa language technology, so each of the 250 records was assessed against the scope criteria of Table~\ref{tab:criteria} for whether it contributes directly to that goal, as the subject of a dataset, a system, an evaluation, or an analysis bearing on Hausa. The screen set aside 221 records: 203 outside the direct scope of the review, overwhelmingly the multilingual-speech, foundation-model, and adjacent-method items that v1 had included for breadth; sixteen Hausa-area records also set aside at screening; and two overlapping entries (E3). \textbf{29 studies were retained} as the direct-contribution core. Because a single reviewer took these decisions, two safeguards applied: every decision is logged per record with its reason in the repository (\texttt{screening\_decisions.csv}), and the per-area discard counts in that log come from the recorded area field of each record rather than from memory.
+
+\begin{table}[!htb]\centering\small
+\caption{Scope criteria applied to every record.}
+\label{tab:criteria}
+\begin{tabular}{@{}p{0.07\textwidth}p{0.83\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Criterion} \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Retention}} \\
+I1 & Bears directly on Hausa language technology: Hausa is the subject of the dataset, system, evaluation, or analysis. \\
+I2 & Published or preprinted within the 2018--2026 window, with three deliberate standing exceptions from earlier years (an LKB grammar of Hausa \citep{p003}, a 2012 Hausa speech recogniser \citep{p123}, and the Hausa WordNet \citep{p086}). \\
+I3 & Full text obtainable and machine-readable. \\
+I4 & Resolvable record: a peer-reviewed venue or workshop, a preprint, or an archival copy. \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Exclusion}} \\
+E1 & Outside the direct scope of the review: no direct contribution to Hausa language technology. \\
+E2 & Full text not retrievable (publisher block with no open-access mirror). \\
+E3 & Overlapping record of a work already in the corpus. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Corpus completion and retrieval}\label{sec:completion}
+The screened core left coverage gaps that v1, by design, could not fill: recent Hausa-specific studies, shared-task systems, and African evaluations reporting Hausa results. A completion pass therefore compiled a structured register of \textbf{159 candidate records} with the same metadata fields as v1, drawn from systematic monitoring of the venues and communities where Hausa work appears; 101 of the 159 records (63.5\%) resolve to the ACL Anthology (68) and arXiv (33), with the remainder spread across roughly thirty further platforms, including author copies on ResearchGate (8) and Academia.edu (2) and regional African journals. Of the 159 candidates, 40 described works already held in the working collection with verified full texts (E3); the remaining 119 were pursued in a single scripted retrieval run on 5 October 2026 (UTC), with strict PDF validation, publisher-specific fallbacks, and open-access metadata lookups: 92 full texts were retrieved, and 27 candidates could not be retrieved or failed verification and were excluded under E2. Fifteen of the retrieved texts fell outside the direct scope at full-text check and were excluded under E1, leaving \textbf{77 studies added by retrieval}; together with the 47 studies already held and verified outside v1, the completion pass contributed \textbf{124 studies}. With the 29 retained from v1, the final corpus (version 2) comprises \textbf{153 studies}; Figure~\ref{fig:selection} gives the resulting flow, every decision in it is logged per record in \texttt{screening\_decisions.csv}, and the counts recompute mechanically from that log. Table~\ref{tab:composition} profiles the 153 studies by year and venue class. Figure~\ref{fig:timeline} plots the same distribution as a timeline.
+
+\begin{table}[!htb]\centering\small
+\caption{Composition of the final corpus: 153 studies by publication year and venue class.}
+\label{tab:composition}
+\begin{tabular}{@{}lrlr@{}}
+\toprule
+\textbf{Year} & \textbf{Studies} & \textbf{Venue class} & \textbf{Studies} \\
+\midrule
+2009 & 1 \\
+2012 & 2 \\
+2019 & 3 \\
+2020 & 4 \\
+2021 & 8 \\
+2022 & 18 \\
+2023 & 15 \\
+2024 & 20 \\
+2025 & 39 \\
+2026 & 43 \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Total}} & Peer-reviewed venue or workshop & 74 \\
+\multicolumn{2}{@{}l}{} & Preprint or repository copy & 43 \\
+\multicolumn{2}{@{}l}{} & Other venue & 36 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[!htb]\centering
+\includegraphics[width=0.95\textwidth]{fig_timeline.pdf}
+\caption{Publication timeline of the 153 included studies, by year and venue class.}
+\label{fig:timeline}
+\end{figure}
+
+\begin{figure}[!htb]\centering
+\includegraphics[width=0.9\textwidth]{study_selection.pdf}
+\caption{Study selection flow. The evidence base is a curated corpus maintained in two versions: version 1 (250 publications, quota-structured across eight thematic areas) was reduced by scope screening, and a completion pass added the remaining studies; 41 resources were catalogued in parallel. Every per-record decision, with reason and route, is logged in \texttt{screening\_decisions.csv}; the counts are machine-readable in \texttt{selection\_counts.csv} and recompute mechanically from the log.}
+\label{fig:selection}
+\end{figure}
+\subsection{Data extraction}
+For each included study we recorded the task, the dataset and its size, the model or method, and the headline result, on a fixed extraction form (\texttt{extraction\_sheet.csv}). For the 41 resources we recorded type, domain, size or coverage, and access conditions (\texttt{resource\_catalogue.csv}). The synthesis in Sections~\ref{sec:resources}--\ref{sec:findings} reports only figures that we could read in the sources themselves, and every number is tied to the study or resource it came from. A companion workbook records, for every study and resource, the specific insight drawn from it and the section of this paper where that insight is used.
+
+\subsection{Quality assessment}\label{sec:qa}
+Because a quality-assessment step was missing from earlier Hausa reviews, we assessed every included study on a five-item bibliographic rubric, chosen so that each item is objectively verifiable from the record rather than a matter of judgment (Table~\ref{tab:qa}). The rubric measures transparency and Hausa specificity, not methodological rigour; we deliberately do not grade study designs, which are too heterogeneous across this corpus for a single scale. Scores were computed mechanically from the extracted records and are reproducible from the repository (\texttt{quality\_assessment.csv}).
+
+\begin{table}[t]\centering\small
+\caption{Quality-assessment rubric (0--6 points, computed per study).}
+\label{tab:qa}
+\begin{tabular}{@{}p{0.07\textwidth} p{0.68\textwidth} p{0.13\textwidth}@{}}
+\toprule
+\textbf{Item} & \textbf{Criterion} & \textbf{Points} \\
+\midrule
+QA1 & Publication venue: peer-reviewed venue or workshop / preprint or repository copy / other & 1.0 / 0.5 / 0 \\
+QA2 & Data statement: dataset and size both reported / partially reported / not reported & 1.0 / 0.5 / 0 \\
+QA3 & Quantitative result reported in the record & 1 / 0 \\
+QA4 & Hausa specificity: the study's text discusses Hausa extensively / mentions it / not at all & 2 / 1 / 0 \\
+QA5 & Resolvable artifact link present & 1 / 0 \\
+\midrule
+ & \textbf{Bands} & High $\geq$ 4.5, Medium 2.5--4.4, Low $<$ 2.5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Of the 153 studies, \QAhigh{} fall in the High band, \QAmed{} in the Medium band, and one in the Low band. The distribution is uneven across blocks: corpora and benchmarks concentrate the High band, while 43 of the 153 studies (28.1\%) are preprints (QA1 = 0.5), and all 41 catalogued resources report a size or coverage statement. We retain all 153 studies in the synthesis regardless of band, and we cite the single Low-band study, a venue-unresolved benchmarking report, only for its protocol guidance rather than for its results. The full per-study scoring is in the repository; Section~\ref{sec:threats} discusses what this rubric does and does not capture.
+
+\subsection{Taxonomy derivation}\label{sec:taxmethod}
+The nine thematic blocks were derived in two passes. In the first pass, the structured register had grouped records into thirteen provisional categories (surveys; community initiatives; corpora; machine translation; MT evaluation; pretrained models; LLMs and generation; benchmarks; sequence labelling; speech; sentiment and safety; multimodal and script; tokenization and efficiency). In the second pass we consolidated these by task affinity into nine blocks, merging categories that share infrastructure (for example, MT and MT evaluation), separating communities and policy from surveys, and assigning every multi-task study exactly one primary block by its dominant contribution. The grouping was iterated until each of the 153 studies sat in exactly one block and every block contained at least eight studies; the mapping from every study to its block is in \texttt{study\_inventory.csv}. We acknowledge the residual subjectivity of any such grouping in Section~\ref{sec:threats}, and the taxonomy should be read as an organising device for the synthesis, not as a claim about the field's structure.
+
+\section{A Taxonomy of Hausa Language Technology}\label{sec:taxonomy}
+We organise the 153 studies into nine thematic blocks (Table~\ref{tab:blocks}), derived as described in Section~\ref{sec:taxmethod}. The taxonomy separates \emph{infrastructure} (blocks 1--2) from \emph{capability} (blocks 3--8) and from \emph{efficiency and fairness} (block 9) because, as the synthesis shows, infrastructure rather than modelling novelty remains the binding constraint on the field.
+
+\begin{table}[t]\centering\small
+\caption{Thematic blocks of the reviewed literature (studies per block).}
+\label{tab:blocks}
+\begin{tabular}{@{}clc@{}}
+\toprule
+\textbf{\#} & \textbf{Block} & \textbf{Studies} \\
+\midrule
+\BlockTableRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Resource Landscape (RQ1)}\label{sec:resources}
+\subsection{Text and lexical resources}
+Hausa's text infrastructure has consolidated around a small number of community-maintained assets. The Masakhane task suites provide named-entity \citep{p051}, part-of-speech \citep{p055} (1{,}504 annotated sentences), and news-topic \citep{p109} annotations. News-domain parallel data is anchored by MAFAND-MT, with 5{,}898 Hausa--English pairs \citep{p027}. Lexical artefacts range from the Hausa WordNet \citep{p086} and static hauWE embeddings \citep{p021} to an abstract WordNet verbalisable in 265 languages \citep{p022}, a polysemous-word dataset for word-sense disambiguation \citep{p085}, and a dedicated large-scale collection of diverse Hausa datasets \citep{p083}. Pre-training corpora have begun to receive the same attention: better-filtered data yields better small multilingual models even at fixed compute \citep{p084}, and web-mined corpora now underpin several African language models.
+
+\subsection{Speech resources}
+Speech is the least equable axis. The documented holdings are substantial in aggregate but narrow in kind. A 47-hour studio read-speech corpus supports ASR and TTS development \citep{p038}; BibleTTS contributes up to roughly 86 hours of 48\,kHz single-speaker audio per language \citep{p039}; and the Translators without Borders TWB Voice corpus adds about 58 hours across 36{,}665 recordings (R-21). Crowdsourced and broadcast sources (Common Voice, FLEURS, and 671 hours of unlabeled West African broadcast including Hausa \citep{p040}) sit alongside WAXAL's roughly 1{,}250-hour multilingual component \citep{p046} and the 1{,}800-hour, 5{,}000-speaker NaijaVoices corpus \citep{p127}. Two synthetic-data programmes point to where growth will come from: TTS-generated Hausa ASR data at the 993-hour (YourTTS) and 450-hour (XTTS) scale \citep{p041}, and the CLEAR Global collection of Hausa synthetic voices (R-37). The contrast with the modelling side is stark. Self-supervised and multilingual speech models keep improving \citep{p125,p131}, and benchmark studies now give concrete model-selection guidance \citep{p044}, yet the largest single-domain Hausa corpora remain an order of magnitude smaller than what high-resource speech technology assumes. Modelling has outpaced data.
+
+\subsection{Multimodal and Ajami resources}
+For a low-resource language, Hausa is comparatively well served with vision--language data. Hausa Visual Genome contributes 32{,}923 image descriptions \citep{p034}, and HaVQA provides 6{,}022 question--answer pairs over 1{,}555 images, with 12{,}044 gold parallel sentences \citep{p035}. Ajami resources are embryonic but real: an OCR dataset with a released model (R-22, R-23) and the zero-annotation morphological inventory of AjamiMorph, built from a 637{,}414-token corpus \citep{p023}. Table~\ref{tab:rtypes} summarises the catalogue by type, and Figure~\ref{fig:resources} crosses resource type with domain coverage.
+
+\begin{table}[t]\centering\small
+\caption{The 41 resource records by type.}
+\label{tab:rtypes}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Resource type} & \textbf{Records} \\
+\ResourceTypeRows
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{figure}[!htb]\centering
+\includegraphics[width=0.9\textwidth]{fig_resources.pdf}
+\caption{Coverage of the 41 catalogued resources, by resource type (rows) and content domain (columns).}
+\label{fig:resources}
+\end{figure}
+
+\section{Applications: What Has Been Built, and How Well (RQ2)}\label{sec:applications}
+
+\subsection{Machine translation and its evaluation}
+English--Hausa machine translation has moved through three phases. It began with baselines: HausaMT v1.0 provided an early neural translation set-up for the pair \citep{p025}. It matured through shared tasks, where the best-documented system (Adam Mickiewicz University's WMT21 submission) was trained on 494{,}246 filtered parallel pairs with back-translation \citep{p026}, and WMT22 extended the exercise at larger scale \citep{p088}. It has since become data-centric: quality filtering of news text improves translation \citep{p089}, pruning studies expose an equity--efficiency trade-off for exactly this resource regime \citep{p090}, and multilingual pre-training lifts few-shot performance \citep{p027,p093,p096}. Document-level translation remains nascent; AFRIDOC-MT offers 334 health and 271 IT documents human-translated across five languages including Hausa \citep{p030}. Evaluation has become a research topic in its own right. African-adapted metrics change system rankings (AfriCOMET reaches $\rho{=}0.441$ with human direct assessment \citep{p028}; SSA-COMET extends the line \citep{p092}; the AfriMTE and SSA-MTE challenge sets document where metrics fail \citep{p029,p031}), and the LLM-era study of \citet{p033} reaches the sharpest conclusion: standard automatic metrics do not reliably track human judgment for Hausa. Commercial LLMs translate Hausa competitively in zero-shot settings, but their quality must be measured with African-grounded metrics \citep{p033}, and LLM-assisted auditing of human translations is emerging as a quality-assurance mechanism \citep{p032}.
+
+\subsection{Sequence labelling and core text processing}
+The arc here runs from classical to neural. Early work tagged parts of speech \citep{p049} and compared transformation-based learning with HMM and n-gram taggers on a Hausa tagset \citep{p052}; morphological engineering produced stemmers \citep{p119,p143}, lemmatizers trained on 4{,}530 curated pairs \citep{p066}, and formal grammars, such as the HaG computational grammar \citep{p122} and the LKB treatment of tone and length \citep{p003}. The transformer era brought distant-supervision NER \citep{p050}, MasakhaNER and its 2.0 extension \citep{p051}, NaijaNER and WAZOBIA-NER for the languages of Nigeria \citep{p116,p117}, MasakhaPOS \citep{p055}, the AfriSUD dependency treebank \citep{p121}, and systematic analyses of cross-lingual transfer \citep{p118,p098}. Summarisation progressed from graph-based extractive methods, evaluated on 113 news articles with 226 human reference summaries \citep{p057}, to transformer-based abstractive systems \citep{p060}. Orthographic normalisation is now its own line of work: a correction corpus of more than 450{,}000 noisy--clean pairs \citep{p067} and an adversarial Dual-BERT successor \citep{p146} address the writing anomalies that real Hausa text contains. A hybrid LSTM--LLM autocomplete reaches 92.4\% Top-1 and 98.6\% Top-5 next-word accuracy, validated with thirty native speakers \citep{p074}, a rarity in this literature, as a system evaluated with users rather than only on held-out data.
+
+\subsection{Sentiment, hate speech, and information integrity}
+This is the largest application cluster, with twelve studies. The data layer is now solid: HESAC offers about 40{,}000 annotated student comments, and a custom stemming algorithm lifts monolingual accuracy there to 97.4\% \citep{p054}; NaijaSenti and AfriSenti supply tweet-level sentiment at SemEval grade \citep{p110,p111,p056}; HausaMovieReview adds 5{,}000 code-switched YouTube comments with inter-annotator agreement checks \citep{p073}. Methods have kept pace: aspect-based sentiment with CNN--attention models reaches 91\% extraction and 92\% polarity accuracy \citep{p063}, language-adaptive fine-tuning helps \citep{p064}, and emotion detection entered the shared-task arena \citep{p065}. The safety literature is among the most distinctive achievements of this corpus. It began with an offensive-content study built from native-speaker research, which showed that translation-based pipelines fail on Hausa idiom \citep{p058}; it now includes the expert-annotated HausaHate corpus of 2{,}000 Facebook comments \citep{p059}, code-mixed and cross-lingual hate-speech detection \citep{p135,p140}, fake-news detection with lightweight transformers \citep{p136}, disinformation models for political discourse \citep{p137}, and sociolinguistic analyses of language choice in Nigerian hate speech \citep{p141,p142}. Across these studies the same lesson recurs: systems trained on native Hausa data outperform pipelines routed through English.
+
+\subsection{Speech technologies}
+Hausa speech technology has travelled far from the 2012 large-vocabulary continuous speech recogniser \citep{p123} that long stood alone. Self-supervised and multilingual foundation models now define the frontier: AfriHuBERT \citep{p125}, unified benchmarking of Whisper, XLS-R, MMS, and W2vBERT with data-scaling and decoding guidance \citep{p046}, accent-robust adaptation \citep{p131}, and Nigerian-accent benchmarking \citep{p129}, with regional data efforts such as SALAN scaling across the languages of Niger \citep{p124}. Speech translation for Hausa is now both dataset-backed and architecture-backed: NaijaS2ST provides non-cascaded parallel speech translation data \citep{p047}, and a dual-stream acoustic encoder bridged to a frozen LLM through LoRA reaches 91.29 proxy SacreBLEU on IWSLT26 \citep{p048}, with LLM-based re-assessments of speech-translation assumptions following \citep{p130}. Speech is also being repositioned as an acquisition tool: fine-tuning MMS-300M on 12.3 hours of curated Hausa audio reaches 9.48\% word error rate, a 78\% relative reduction over the prior baseline, which makes ASR-to-text pipelines realistic as a way to grow text corpora \citep{p001}.
+
+\subsection{LLMs, benchmarks, and reasoning}
+African benchmark suites now routinely include Hausa: Belebele across 122 language variants \citep{p012}, IrokoBench's NLI, math, and knowledge tasks \citep{p013}, AfriMTEB for embeddings \citep{p016}, SIB-200 for topic classification \citep{p108}, 2M-Belebele \citep{p114}, and the AfroBench umbrella \citep{p099}. African-centred models span small language models (InkubaLM-0.4B \citep{p100}; Cheetah for 517 languages \citep{p101}; SabiYarn's multitask pre-training \citep{p102}; Lugha-Llama \citep{p014}), continued-pretraining studies of data mixing and architecture \citep{p103}, instruction-tuning data \citep{p104}, scientific question answering \citep{p105}, and inclusive-NLP initiatives \citep{p106}. The shared-task record tempers enthusiasm. The SemEval-2026 cultural question-answering system, a training-free design with locale-conditional prompting and a two-model fallback, reaches only 36.4 accuracy on Hausa cultural QA \citep{p020}; prompting-strategy studies \citep{p017} and sample-size scaling analyses \citep{p018} show that measured gains depend heavily on prompt design and annotation budget. Reasoning is the weakest frontier in the evidence gathered here \citep{p015,p107}.
+
+\subsection{Multimodal, Ajami-script, and applied systems}
+Beyond the resources of Section~\ref{sec:resources}, applications now include multimodal machine translation that uses visual context \citep{p036}, document-VQA over Hausa standardized examinations that exposes the gaps in multimodal LLMs \citep{p037}, cultural multimodal QA \citep{p144}, LLM-plus-ViT classification systems \citep{p149}, comparative studies of deep and transformer architectures \citep{p150}, and multi-task sentiment and news models \citep{p151}. The Ajami line stands out as a distinctive sub-area of Hausa NLP: cross-script hate-speech detection with a linguistically motivated Latin-to-Ajami converter reaches a macro-F1 of 76.09\% \citep{p002}, AjamiMorph builds morphology without annotation \citep{p023}, and a DNN recogniser addresses Ajami script directly \citep{p145}.
+
+\subsection{Information retrieval, tokenization, and efficiency}
+The retrieval ecosystem is thin but no longer empty. CIRAL provides what its authors describe, and to the best of our knowledge is, the first test collection for Hausa cross-lingual retrieval \citep{p008}; backbone and training-regime choices materially affect African dense retrieval \citep{p009}; contrastive fine-tuning of BGE-M3 on 85{,}000 Hausa rows improves Nigerian retrieval \citep{p010}; and LLM-based retrieval pipelines are competitive with translate-then-search \citep{p011}. On fairness and efficiency, tokenizer audits turn fertility rates into a reproducible cost penalty for African languages \citep{p019,p152}, language identification is solved at tooling level with AfroLID \citep{p153}, and text categorisation improves domain-agnostic stopword extraction \citep{p154}.
+
+\section{Cross-Cutting Findings (RQ3)}\label{sec:findings}
+\paragraph{F1: The field has become data-centric, and its centre of gravity is moving to data generation.}
+The most consequential recent techniques in this literature propose no new architectures. They grow, filter, or elicit data: ASR-based acquisition \citep{p001}, quality filtering \citep{p084,p089}, and LLM elicitation \citep{p024}. Elicitation is double-edged. Prompting GPT-4o-mini and Gemini-2.5-Flash harvested 23{,}192 Hausa words, with volume-maximising prompts yielding six to forty-one times more text, but the same studies urge caution about homogenisation, and controlled experiments show that LLM augmentation fails to improve Hausa NER while back-translation helps part-of-speech tagging only marginally \citep{p024,p075}. Data generation, in short, is promising but not yet a substitute for curation.
+\paragraph{F2: Transfer from multilingual pre-trained models is the default recipe, and its success is increasingly predictable.}
+From adapter-based adaptation \citep{p094} and AfroLM's self-active learning \citep{p095} to SERENGETI's massively multilingual pre-training \citep{p096}, efficient small-model pre-training \citep{p097}, and predictors of transfer based on embedding similarity \citep{p098}, the reliable sequence is: start from an African-tuned multilingual encoder such as AfroXLM-R, add language-adaptive fine-tuning \citep{p053}, then fine-tune on the task. Even source-language selection has become an optimisation problem with known answers: geographic distance works best for sequence labelling, embedding similarity for sentiment \citep{p076}.
+\paragraph{F3: Evaluation validity is the most fragile link.}
+African-grounded metrics change system rankings \citep{p028,p092}; the WMT challenge-set analyses agree \citep{p029,p031}; LLM-era Hausa translation confirms that standard metrics mislead \citep{p033}; and benchmark scores move with prompting and annotation budgets \citep{p017,p018,p020}. Any claim of state of the art for Hausa should be treated as provisional until it is metric-audited.
+\paragraph{F4: Tokenization and script impose a measurable, economic penalty.}
+The token-tax line of work converts tokenizer fertility into a reproducible deployment cost \citep{p019,p152}. For Ajami the penalty is compounded by near-total resource absence \citep{p002,p023}. Who pays? Hausa speakers and the organisations that serve them, in inference cost and in what simply does not get built.
+\paragraph{F5: Safety and cultural grounding have become core, not peripheral.}
+Hausa safety datasets are built from native data with speaker studies \citep{p058,p059,p135,p136,p137,p138,p139,p140,p141,p142,p146}, and cultural benchmarks \citep{p020,p144,p148} show that frontier models still underperform on Hausa cultural knowledge, 36.4 accuracy on the SemEval-2026 task \citep{p020}. To the best of our knowledge, no other West African language has a denser safety literature; the same cannot yet be said of the knowledge that safety systems need.
+\paragraph{F6: Community infrastructure is a first-class research object.}
+Participatory machine translation research \citep{p079}, the Masakhane Web platform \citep{p080}, and the African Languages Lab \citep{p081} demonstrate that sustainability, ownership, and policy alignment, echoed in analyses of AI's societal effects on language and learning \citep{p082}, decide whether artefacts survive. With 41 of the 153 studies (28.1\%) available only as preprints, that lesson is urgent.
+
+\section{Challenges}\label{sec:challenges}
+\begin{enumerate}\itemsep2pt
+  \item \textbf{Data scarcity with domain skew.} Speech data remains at hours-not-thousands scale and read-speech dominated (Section~\ref{sec:resources}); text is heavy on news and social media and thin on health, legal, and education material; document-level data amounts to 605 AFRIDOC-MT documents across five languages \citep{p030}.
+  \item \textbf{Orthography, diacritics, and code-switching.} Writing anomalies are common enough to support a 450{,}000-pair correction corpus \citep{p067,p146}; stems and lemmata remain non-trivial \citep{p119,p143,p066}; and English--Hausa code-switching is the norm in real comment streams \citep{p073,p135,p142}.
+  \item \textbf{Suprasegmentals.} Tone and length are lexically contrastive and resist segment-only pipelines \citep{p003}; almost no production system models them.
+  \item \textbf{The Ajami divide.} Two scripts, one language: Ajami corpora are roughly three orders of magnitude smaller than Boko's, and even Ajami hate speech detection requires bespoke cross-script architectures \citep{p002,p023,p146}.
+  \item \textbf{Evaluation validity.} Metric instability \citep{p028,p033,p092,p029,p031} and prompt sensitivity \citep{p017,p018} make cross-paper comparison hazardous.
+  \item \textbf{Economic access.} Tokenizer penalties \citep{p019,p152} and API costs make state-of-the-art-by-API fragile for Hausa deployers; fallback engineering is already published practice \citep{p020}.
+  \item \textbf{Publisher access and reproducibility.} Roughly a fifth of the candidate works we identified for this review sit behind publishers that block automated and often institutional access. Their absence biases the public record of the field, much of it work on Hausa from regional venues, and is a structural problem that open-access advocacy should treat as a hit list.
+\end{enumerate}
+
+\section{Research Gaps and Agenda (RQ4)}\label{sec:gaps}
+\begin{enumerate}\itemsep3pt
+  \item \textbf{G1: Ajami parity.} Build a Boko--Ajami parallel corpus, cross-script encoders, and an Ajami OCR benchmark with error typology. AjamiMorph's zero-annotation playbook \citep{p023} generalises.
+  \item \textbf{G2: Modern open Hausa speech recognition.} Pair NaijaVoices-scale Hausa speech \citep{p127} with self-supervised fine-tuning \citep{p125} and the published benchmarking protocols \citep{p046}; a conversational-Hausa target of 15\% word error rate or better is within reach of current methods.
+  \item \textbf{G3: Document-level and domain machine translation.} Scale AFRIDOC-MT-style Hausa health, IT, and education documents \citep{p030}, and evaluate with SSA-MTE-grade metrics \citep{p031}.
+  \item \textbf{G4: African-grounded evaluation for LLM-era Hausa.} Develop human-anchored, Hausa-specific metric suites, and report metric audits alongside every system \citep{p033,p092}.
+  \item \textbf{G5: Morphology- and tone-aware modeling.} Tokenizers and objectives that respect tone, length, and gemination \citep{p003}, tested against the token tax \citep{p019,p152}.
+  \item \textbf{G6: Culturally grounded safety and knowledge.} Grow the native safety corpora \citep{p058,p059,p135,p136,p137,p138,p139,p140,p141,p142,p146} and cultural benchmarks \citep{p020,p144,p148} beyond their current few-thousand-item scale, with dialectal coverage (Kano, Katsina, Sokoto, Zaria).
+  \item \textbf{G7: Structured knowledge.} Connect the Hausa WordNet \citep{p086}, abstract WordNets \citep{p022}, word-sense-disambiguation data \citep{p085}, and AfriSUD \citep{p121} into an evaluation-ready semantic layer.
+  \item \textbf{G8: A retrieval ecosystem.} Grow CIRAL \citep{p008} into a Hausa retrieval suite spanning dense, sparse, and LLM modes \citep{p009,p010,p011}, with African-anchored relevance judgments.
+  \item \textbf{G9: Human-centred deployment evidence.} The literature contains one thirty-user study \citep{p074}. Deployment evaluations in education, health, and media (NigBench points the way \citep{p147}) deserve funding on par with model building.
+  \item \textbf{G10: Reproducibility infrastructure.} Sustain open catalogues (R-01), require data statements, and favour venues that permit artefact release, so that the next review of Hausa does not have to reconstruct the field from scattered sources.
+\end{enumerate}
+
+Table~\ref{tab:gapmatrix} maps each gap to the studies cited in its discussion, with their quality bands. Two patterns stand out. First, the gaps are grounded in the corpus rather than in wishful thinking: most rest on a compact base of one to fourteen cited studies, and the thinnest bases belong to the most distinctive gaps. G1, Ajami parity, rests on a single high-band study, which is precisely what makes it a research gap rather than work in progress. Second, G10 shows no study counts because it is anchored not in prior work but in this review's own retrieval record: 27 of the 367 unique records (7.4\%) could not be obtained at any cost we could pay, and that experience is itself evidence. Figure~\ref{fig:gaps} shows the same matrix with the per-band composition of each gap.
+
+\begin{table}[t]\centering\small
+\caption{Evidence-to-gap matrix. For each gap G1--G10: the number of studies cited in its discussion, by quality band (Section~\ref{sec:qa}). G10 is anchored in this review's own retrieval record rather than in prior studies (see text).}
+\label{tab:gapmatrix}
+\begin{tabular}{@{}clcccc@{}}
+\toprule
+\textbf{Gap} & \textbf{Theme} & \textbf{Studies} & \textbf{High} & \textbf{Medium} & \textbf{Low} \\
+\midrule
+\GapMatrixRows
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{figure}[!htb]\centering
+\includegraphics[width=0.95\textwidth]{fig_gaps.pdf}
+\caption{Evidence-to-gap view: studies cited in the discussion of each gap G1--G10, by quality band (left), and the total per gap (right). G10 is anchored in this review's own retrieval record rather than in prior studies.}
+\label{fig:gaps}
+\end{figure}
+
+\section{Threats to Validity}\label{sec:threats}
+\textbf{Scope-screening bias.} The reduction of the initial corpus from 250 publications to a 29-study core rested on one reviewer's scope judgments; the per-record log and the per-area discard counts make those judgments inspectable, but no second-reviewer check can be reported. The completion pass inherits the same risk in mirror image: studies that neither corpus version captured are absent from this review regardless of their importance, and any future update should add an independent database search to test the corpus for gaps. \textbf{Publication and preprint bias.} With 43 of 153 studies (28.1\%) available only as preprints, our synthesis weights unreviewed work more heavily than a mature field would; the quality-assessment rubric (Section~\ref{sec:qa}) marks such studies, but we cannot exclude that some preprint results will not survive review. \textbf{Selection and retrieval bias.} Studies behind publisher barriers, 27 of the 367 unique records (7.4\%), could not be obtained; to the extent that they concentrate industry and Global-South-venue work, our synthesis inherits that bias. We chose to exclude rather than partially synthesise these records, which keeps the evidence base verifiable but shrinks it. \textbf{Single-reviewer risk.} Screening and extraction were performed by one reviewer with scripted support; although every decision is logged with its reason, no second-reviewer agreement statistic can be reported, and borderline inclusion decisions may reflect one reader's judgment. \textbf{Temporal bias.} The corpus over-represents 2025--2026 (53.6\% of studies) and peer-reviewed ACL-family venues (49.7\%), so the synthesis describes the field at its most recent and most conference-driven, not its average state over time. \textbf{Construct and taxonomy subjectivity.} Requiring Hausa-specific content in full text guarantees relevance but may have set aside pan-African studies whose Hausa coverage is confined to figures; and the nine-block taxonomy, however documented, embeds grouping judgments that other reviewers might draw differently. \textbf{Quality rubric limits.} The rubric scores transparency (venue, data statement, artifact link) and Hausa specificity, not methodological rigour or result reliability; a High band does not mean a trustworthy result, only a well-documented one. \textbf{Internal validity.} Results quoted here are as reported by the primary studies; we did not re-run systems. The companion repository makes every inclusion decision, extraction, and quality score inspectable so that readers may audit these judgments. The review was not prospectively registered (PROSPERO, for instance, does not accept computer-science reviews); the procedures reported in Section~\ref{sec:method} were fixed before analysis and are reconstructed here from the logged artifacts of the review process.
+
+\section{Conclusion}\label{sec:conclusion}
+Hausa language technology has entered the LLM era with real assets (two script traditions, a functioning benchmark layer, an African MT-evaluation stack, and, to the best of our knowledge, one of the densest concentrations of safety literature among West African languages) and with equally real deficits: speech data an order of magnitude short, Ajami nearly absent, evaluation validity fragile, and over a quarter of the pursued register behind publisher walls. The ten-gap agenda set out above is deliberately buildable, because every gap has a working template elsewhere in this corpus. What the field needs now is not another architecture. It needs the data, the metrics, and the community infrastructure that would make Hausa a first-class citizen of artificial intelligence, and in the process, a testbed for how AI can serve the world's other low-resource languages.
+
+\section*{Declarations}\label{sec:data}
+
+\noindent\textbf{Funding.} No funding was received for this work.
+
+\medskip\noindent\textbf{Competing interests.} The authors declare no competing interests.
+
+\medskip\noindent\textbf{Ethics.} Not applicable: the review synthesised published studies and involved no human participants or animal subjects.
+
+\medskip\noindent\textbf{Data availability.} All machine-readable artifacts of this review are deposited in the public repository that accompanies the paper: the 153-study inventory with per-study insights and quality scores (\texttt{study\_inventory.csv}, \texttt{quality\_assessment.csv}), the 41-resource catalogue (\texttt{resource\_catalogue.csv}), the fixed extraction form (\texttt{extraction\_sheet.csv}), the complete per-record screening log (\texttt{screening\_decisions.csv}), the study-selection count table (\texttt{selection\_counts.csv}), the evidence-to-gap matrix (\texttt{evidence\_gap\_matrix.csv}), the claim-audit log (\texttt{claim\_audit\_log.csv}), the corpus-construction record with retrieval timestamps (\texttt{corpus\_construction.md}), the version-1 corpus as received before screening (\texttt{corpus\_v1.xlsx}), and the per-study insights workbook (\texttt{Hausa\_Review\_Insights\_Tracker.xlsx}). The repository will be archived on Zenodo with a versioned DOI; the DOI will be inserted here at deposit [ZENODO DOI]. [GitHub repository URL to be inserted upon upload.] The 153 full-text PDFs are distributed separately, on request from the author, so as to respect the access conditions of their publishers.
+
+\medskip\noindent\textbf{Author contributions.} Ismail Suleiman: conceptualisation, methodology, corpus construction and screening, data curation, formal analysis, visualisation, writing (original draft), and writing (review and editing). Monday Jubrin Abdullahi: supervision, validation, and writing (review and editing).
+
+\bibliography{refs}
+
+\appendix
+\section{Corpus Inventory}\label{app:inventory}
+Table~\ref{tab:inventory} lists every source retained in the final corpus, with its corpus identifier, title, publication year, and the thematic block under which it is synthesised. Entries marked with $^{\circ}$ could not have their author metadata confirmed from the source PDF; they are cited in the bibliography by title and year, and their canonical links are in the repository inventory.
+\input{appendix_inventory}
+
+\section{Reporting Checklist (Condensed)}\label{app:checklist}
+\begin{table}[h]\centering\small
+\caption{Reporting items and where they are reported. Items 5 and 6 are adapted to a curated-corpus review: identification operated on a curated seed collection and a structured register, not on de novo database searches, and this is disclosed in \S Corpus construction (version 1) and under threats to validity.}
+\begin{tabular}{@{}p{0.05\textwidth}p{0.55\textwidth}p{0.30\textwidth}@{}}
+\toprule
+\textbf{Item} & \textbf{Reporting item} & \textbf{Reported in} \\
+\midrule
+1 & Title identifies the report as a systematic review & Title \\
+2 & Structured abstract & Abstract \\
+3 & Rationale and objectives in the introduction & \S\ref{sec:intro} (RQ1--RQ4) \\
+4 & Explicit eligibility criteria & \S\ref{sec:screening}, Table~\ref{tab:criteria} \\
+5 & Information sources & \S Corpus construction (version 1); \texttt{corpus\_v1.xlsx} \\
+6 & Search strategy & Curated-corpus approach with explicit area targets and scope screening (Sections~\ref{sec:provenance}--\ref{sec:screening}) \\
+7 & Selection process & \S\ref{sec:screening} \\
+8 & Data extraction process & \S\ref{sec:qa} and \S Data Extraction \\
+9 & Data items & \S Data Extraction \\
+10 & Study risk-of-bias / quality assessment & \S\ref{sec:qa}, Table~\ref{tab:qa} \\
+11 & Synthesis methods & \S\ref{sec:taxmethod} \\
+12 & Reporting-bias assessment & \S Threats (publication bias) \\
+13 & Study selection results & Figure~\ref{fig:selection}; \texttt{screening\_decisions.csv} \\
+14 & Characteristics of included studies & Table~\ref{tab:composition}, Table~\ref{tab:blocks}, App.~\ref{app:inventory} \\
+15 & Certainty of evidence & Partial: bibliographic QA rubric (\S\ref{sec:qa}) \\
+16 & Discussion of limitations & \S\ref{sec:threats} \\
+17 & Registration and protocol & Retrospective; disclosed in \S Data Availability and \S Corpus construction (version 1) \\
+18 & Data availability & \S Data Availability \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{document}

@@ -1,0 +1,30 @@
+{
+  "title": "Hausa Language Technologies in the Age of Artificial Intelligence: A Systematic Review of Resources, Applications, Challenges, and Research Gaps (corpus and protocol)",
+  "creators": [
+    {
+      "name": "Suleiman, Ismail",
+      "affiliation": "Woxsen University, Hyderabad, India"
+    },
+    {
+      "name": "Abdullahi, Monday Jubrin",
+      "affiliation": "Woxsen University, Hyderabad, India"
+    }
+  ],
+  "description": "<p>Complete machine-readable artifacts of a study-selection 2020-reported systematic review of Hausa language technology, following a curated-corpus methodology: version 1 of the corpus (250 quota-structured publications across eight thematic areas), the per-record scope-screening and retrieval log (version 1 reduced to a 29-study direct-contribution core; a 159-record completion register and a scripted retrieval run of 5 October 2026 added the remaining studies), the final 153-study inventory with per-study insights and bibliographic quality scores, a 41-resource catalogue, the fixed data-extraction form, study-selection flow counts, an evidence-to-gap matrix for gaps G1-G10, a categorical-claim audit log, and the LaTeX source of the review paper.</p>",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "upload_type": "dataset",
+  "publication_date": "2026-10-26",
+  "language": "eng",
+  "keywords": [
+    "Hausa",
+    "low-resource languages",
+    "systematic review",
+    "study-selection",
+    "natural language processing",
+    "Africa",
+    "machine translation",
+    "speech recognition",
+    "Ajami"
+  ]
+}

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this corpus or repository, please cite the accompanying systematic review."
+title: "Hausa Language Technologies in the Age of Artificial Intelligence: A Systematic Review of Resources, Applications, Challenges, and Research Gaps (corpus and protocol)"
+authors:
+  - family-names: Suleiman
+    given-names: Ismail
+    email: iismail.suleiman_phd.2026@woxsen.edu.in
+    affiliation: "Woxsen University, Hyderabad, India"
+  - family-names: Abdullahi
+    given-names: "Monday Jubrin"
+    email: abdullahi.monday@woxsen.edu.in
+    affiliation: "Woxsen University, Hyderabad, India"
+type: dataset
+version: 1.0.0
+date-released: "2026-10-26"
+license: CC-BY-4.0
+doi: "[ZENODO DOI upon deposit]"
