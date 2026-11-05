@@ -1,6 +1,8 @@
 # Hausa Language Technologies in the Age of Artificial Intelligence
 ## Systematic Review: Corpus, Protocol, and Extraction Records
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23972015.svg)](https://doi.org/10.5281/zenodo.23972015)
+
 This repository contains every machine-readable artifact of the systematic review
 "Hausa Language Technologies in the Age of Artificial Intelligence: A Systematic
 Review of Resources, Applications, Challenges, and Research Gaps", reported in
@@ -13,7 +15,8 @@ line with the study-selection 2020 statement.
 
 ## How to cite
 
-Cite the archived dataset via its Zenodo DOI (inserted here upon deposit) and/or the
+Cite the archived dataset via its Zenodo DOI
+([10.5281/zenodo.23972015](https://doi.org/10.5281/zenodo.23972015)) and/or the
 review paper. Citation metadata is in `CITATION.cff`.
 
 ## Structure

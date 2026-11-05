@@ -14,4 +14,5 @@ type: dataset
 version: 1.0.0
 date-released: "2026-10-26"
 license: CC-BY-4.0
-doi: "[ZENODO DOI upon deposit]"
+doi: "10.5281/zenodo.23972015"
+repository-code: "https://github.com/issuleiman/hausa-lt-systematic-review"

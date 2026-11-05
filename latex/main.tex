@@ -13,6 +13,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{booktabs,longtable,makecell}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
 \input{stats_fragments}
 \input{tables_gen}
 
@@ -175,8 +177,67 @@ The screened core left coverage gaps that v1, by design, could not fill: recent 
 \end{figure}
 
 \begin{figure}[!htb]\centering
-\includegraphics[width=0.9\textwidth]{study_selection.pdf}
-\caption{Study selection flow. The evidence base is a curated corpus maintained in two versions: version 1 (250 publications, quota-structured across eight thematic areas) was reduced by scope screening, and a completion pass added the remaining studies; 41 resources were catalogued in parallel. Every per-record decision, with reason and route, is logged in \texttt{screening\_decisions.csv}; the counts are machine-readable in \texttt{selection\_counts.csv} and recompute mechanically from the log.}
+\begin{tikzpicture}[
+  node distance=0.6cm and 1.0cm,
+  box/.style={draw, rounded corners=3pt, text width=5.8cm, minimum height=0.9cm,
+              align=center, font=\small, fill=white, line width=0.5pt},
+  excl/.style={draw, rounded corners=3pt, text width=5.2cm, minimum height=0.9cm,
+               align=center, font=\small, fill=gray!10, line width=0.5pt},
+  side/.style={draw, rounded corners=3pt, text width=4.0cm, minimum height=0.9cm,
+               align=center, font=\small, fill=blue!5, line width=0.5pt, dashed},
+  arr/.style={->, >=stealth, line width=0.6pt},
+  earr/.style={->, >=stealth, line width=0.5pt, dashed, gray!70},
+  stage/.style={font=\scriptsize\bfseries\sffamily, text=gray!60, rotate=90, anchor=south},
+]
+% --- Identification ---
+\node[box, fill=blue!8] (v1) {Version-1 corpus\\(quota-structured, 8 thematic areas)\\[1pt]\textbf{$n = 250$ publications}};
+\node[stage, left=0.5cm of v1] {\textsf{IDENTIFICATION}};
+
+% --- Screening ---
+\node[box, below=of v1] (screen) {Records assessed against\\scope criteria (Table~4)\\[1pt]\textbf{$n = 250$}};
+\node[excl, right=1.0cm of screen] (e1a) {Set aside at scope screening\\[1pt]$n = 221$\\{\scriptsize (203 outside scope $+$ 16 superseded $+$ 2 overlap)}};
+\draw[arr] (v1) -- (screen);
+\draw[earr] (screen) -- (e1a);
+\node[stage, left=0.5cm of screen] {\textsf{SCREENING}};
+
+% --- Core ---
+\node[box, below=of screen] (core) {Direct-contribution core retained\\[1pt]\textbf{$n = 29$ studies}};
+\draw[arr] (screen) -- (core);
+
+% --- Completion register ---
+\node[box, fill=blue!8, below=0.8cm of core] (reg) {Completion register compiled\\[1pt]\textbf{$n = 159$ candidate records}};
+\node[excl, right=1.0cm of reg] (e3) {Already held \& verified (E3)\\[1pt]$n = 40$};
+\draw[arr] (core) -- (reg);
+\draw[earr] (reg) -- (e3);
+\node[stage, left=0.5cm of reg] {\textsf{COMPLETION}};
+
+% --- Retrieval ---
+\node[box, below=of reg] (seek) {Reports sought for retrieval\\[1pt]\textbf{$n = 119$}};
+\node[excl, right=1.0cm of seek] (e2) {Not retrieved (E2)\\[1pt]$n = 27$\\{\scriptsize publisher blocks / failed verification}};
+\draw[arr] (reg) -- (seek);
+\draw[earr] (seek) -- (e2);
+\node[stage, left=0.5cm of seek] {\textsf{RETRIEVAL}};
+
+% --- Eligibility ---
+\node[box, below=of seek] (elig) {Full texts assessed for eligibility\\[1pt]\textbf{$n = 92$}};
+\node[excl, right=1.0cm of elig] (e1b) {Excluded at full text (E1)\\[1pt]$n = 15$\\{\scriptsize no Hausa-specific content}};
+\draw[arr] (seek) -- (elig);
+\draw[earr] (elig) -- (e1b);
+\node[stage, left=0.5cm of elig] {\textsf{ELIGIBILITY}};
+
+% --- Included ---
+\node[box, fill=green!8, below=0.8cm of elig] (added) {Studies added by retrieval: $77$\\Studies contributed by completion pass: $124$\\{\scriptsize (77 retrieved $+$ 47 already verified outside v1)}};
+\draw[arr] (elig) -- (added);
+
+\node[box, fill=green!12, line width=0.8pt, below=0.6cm of added] (final) {\textbf{153 studies included}\\[1pt]$29$ (v1 core) $+ \; 124$ (completion)};
+\draw[arr] (added) -- (final);
+
+% --- Resources (parallel track) ---
+\node[side, right=1.0cm of final] (res) {\textbf{41 resources}\\catalogued in parallel\\(R-01 to R-41)};
+\draw[earr] (final.east) -- (res.west);
+\node[stage, left=0.5cm of added] {\textsf{INCLUDED}};
+\end{tikzpicture}
+\caption{Study selection flow. The evidence base is a curated corpus maintained in two versions: version 1 (250 publications, quota-structured across eight thematic areas) was reduced by scope screening to a 29-study core, and a completion pass added the remaining studies; 41 resources were catalogued in parallel. Every per-record decision, with reason and route, is logged in \texttt{screening\_decisions.csv}; the counts are machine-readable in \texttt{selection\_counts.csv} and recompute mechanically from the log.}
 \label{fig:selection}
 \end{figure}
 \subsection{Data extraction}
@@ -344,7 +405,7 @@ Hausa language technology has entered the LLM era with real assets (two script t
 
 \medskip\noindent\textbf{Ethics.} Not applicable: the review synthesised published studies and involved no human participants or animal subjects.
 
-\medskip\noindent\textbf{Data availability.} All machine-readable artifacts of this review are deposited in the public repository that accompanies the paper: the 153-study inventory with per-study insights and quality scores (\texttt{study\_inventory.csv}, \texttt{quality\_assessment.csv}), the 41-resource catalogue (\texttt{resource\_catalogue.csv}), the fixed extraction form (\texttt{extraction\_sheet.csv}), the complete per-record screening log (\texttt{screening\_decisions.csv}), the study-selection count table (\texttt{selection\_counts.csv}), the evidence-to-gap matrix (\texttt{evidence\_gap\_matrix.csv}), the claim-audit log (\texttt{claim\_audit\_log.csv}), the corpus-construction record with retrieval timestamps (\texttt{corpus\_construction.md}), the version-1 corpus as received before screening (\texttt{corpus\_v1.xlsx}), and the per-study insights workbook (\texttt{Hausa\_Review\_Insights\_Tracker.xlsx}). The repository will be archived on Zenodo with a versioned DOI; the DOI will be inserted here at deposit [ZENODO DOI]. [GitHub repository URL to be inserted upon upload.] The 153 full-text PDFs are distributed separately, on request from the author, so as to respect the access conditions of their publishers.
+\medskip\noindent\textbf{Data availability.} All machine-readable artifacts of this review are deposited in a public GitHub repository (\url{https://github.com/issuleiman/hausa-lt-systematic-review}) and permanently archived on Zenodo (\url{https://doi.org/10.5281/zenodo.23972015}): the 153-study inventory with per-study insights and quality scores (\texttt{study\_inventory.csv}, \texttt{quality\_assessment.csv}), the 41-resource catalogue (\texttt{resource\_catalogue.csv}), the fixed extraction form (\texttt{extraction\_sheet.csv}), the complete per-record screening log (\texttt{screening\_decisions.csv}), the study-selection count table (\texttt{selection\_counts.csv}), the evidence-to-gap matrix (\texttt{evidence\_gap\_matrix.csv}), the claim-audit log (\texttt{claim\_audit\_log.csv}), the corpus-construction record with retrieval timestamps (\texttt{corpus\_construction.md}), and the version-1 corpus as received before screening (\texttt{corpus\_v1.xlsx}). The 153 full-text PDFs are distributed separately, on request from the corresponding author, so as to respect the access conditions of their publishers.
 
 \medskip\noindent\textbf{Author contributions.} Ismail Suleiman: conceptualisation, methodology, corpus construction and screening, data curation, formal analysis, visualisation, writing (original draft), and writing (review and editing). Monday Jubrin Abdullahi: supervision, validation, and writing (review and editing).
 
