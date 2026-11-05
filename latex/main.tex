@@ -177,67 +177,103 @@ The screened core left coverage gaps that v1, by design, could not fill: recent 
 \end{figure}
 
 \begin{figure}[!htb]\centering
+% --- palette from the companion figures ---
+\definecolor{darkblue}{HTML}{1F4E79}
+\definecolor{medblue}{HTML}{2D75B6}
+\definecolor{ltblue}{HTML}{9DC3E6}
+\definecolor{ltgray}{HTML}{D9D9D9}
+\definecolor{strokgray}{HTML}{4D4D4D}
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-  node distance=0.6cm and 1.0cm,
-  box/.style={draw, rounded corners=3pt, text width=5.8cm, minimum height=0.9cm,
-              align=center, font=\small, fill=white, line width=0.5pt},
-  excl/.style={draw, rounded corners=3pt, text width=5.2cm, minimum height=0.9cm,
-               align=center, font=\small, fill=gray!10, line width=0.5pt},
-  side/.style={draw, rounded corners=3pt, text width=4.0cm, minimum height=0.9cm,
-               align=center, font=\small, fill=blue!5, line width=0.5pt, dashed},
-  arr/.style={->, >=stealth, line width=0.6pt},
-  earr/.style={->, >=stealth, line width=0.5pt, dashed, gray!70},
-  stage/.style={font=\scriptsize\bfseries\sffamily, text=gray!60, rotate=90, anchor=south},
+  node distance=0.55cm and 0.45cm,
+  box/.style={draw=strokgray, rounded corners=2pt, text width=4.6cm,
+              minimum height=0.85cm, align=center, font=\footnotesize,
+              fill=white, line width=0.4pt},
+  excl/.style={draw=strokgray, rounded corners=2pt, text width=3.6cm,
+               minimum height=0.7cm, align=center, font=\scriptsize,
+               fill=ltgray, line width=0.4pt},
+  res/.style={draw=medblue, rounded corners=2pt, text width=3.2cm,
+              minimum height=0.7cm, align=center, font=\scriptsize,
+              fill=ltblue!30, line width=0.6pt, dashed},
+  arr/.style={-{Stealth[length=4pt]}, line width=0.5pt, strokgray},
+  earr/.style={-{Stealth[length=3pt]}, line width=0.4pt, strokgray!60, densely dashed},
+  stglabel/.style={font=\tiny\bfseries\sffamily, text=strokgray!70},
 ]
-% --- Identification ---
-\node[box, fill=blue!8] (v1) {Version-1 corpus\\(quota-structured, 8 thematic areas)\\[1pt]\textbf{$n = 250$ publications}};
-\node[stage, left=0.5cm of v1] {\textsf{IDENTIFICATION}};
+%
+% ===== MAIN COLUMN =====
+%
+\node[box, fill=ltblue!40] (v1)
+  {Version-1 corpus\\(quota-structured, 8 areas)\\[1pt]\textbf{\textit{n}\,=\,250}};
 
-% --- Screening ---
-\node[box, below=of v1] (screen) {Records assessed against\\scope criteria (Table~4)\\[1pt]\textbf{$n = 250$}};
-\node[excl, right=1.0cm of screen] (e1a) {Set aside at scope screening\\[1pt]$n = 221$\\{\scriptsize (203 outside scope $+$ 16 superseded $+$ 2 overlap)}};
-\draw[arr] (v1) -- (screen);
-\draw[earr] (screen) -- (e1a);
-\node[stage, left=0.5cm of screen] {\textsf{SCREENING}};
+\node[box, below=of v1] (screen)
+  {Assessed against scope criteria\\[1pt]\textbf{\textit{n}\,=\,250}};
 
-% --- Core ---
-\node[box, below=of screen] (core) {Direct-contribution core retained\\[1pt]\textbf{$n = 29$ studies}};
+\node[box, below=of screen] (core)
+  {Direct-contribution core\\[1pt]\textbf{\textit{n}\,=\,29 studies}};
+
+\node[box, fill=ltblue!40, below=0.7cm of core] (reg)
+  {Completion register compiled\\[1pt]\textbf{\textit{n}\,=\,159 candidates}};
+
+\node[box, below=of reg] (seek)
+  {Sought for retrieval\\[1pt]\textbf{\textit{n}\,=\,119}};
+
+\node[box, below=of seek] (elig)
+  {Full texts assessed\\[1pt]\textbf{\textit{n}\,=\,92}};
+
+\node[box, fill=medblue!18, below=0.7cm of elig] (added)
+  {Added by retrieval: 77\\Completion pass total: 124\\{\tiny(77 retrieved + 47 already held)}};
+
+\node[box, fill=darkblue!20, line width=0.7pt, draw=darkblue,
+      below=0.5cm of added] (final)
+  {\textbf{153 studies included}\\[1pt]29\,(v1) + 124\,(completion)};
+
+% --- arrows ---
+\draw[arr] (v1)     -- (screen);
 \draw[arr] (screen) -- (core);
+\draw[arr] (core)   -- (reg);
+\draw[arr] (reg)    -- (seek);
+\draw[arr] (seek)   -- (elig);
+\draw[arr] (elig)   -- (added);
+\draw[arr] (added)  -- (final);
 
-% --- Completion register ---
-\node[box, fill=blue!8, below=0.8cm of core] (reg) {Completion register compiled\\[1pt]\textbf{$n = 159$ candidate records}};
-\node[excl, right=1.0cm of reg] (e3) {Already held \& verified (E3)\\[1pt]$n = 40$};
-\draw[arr] (core) -- (reg);
-\draw[earr] (reg) -- (e3);
-\node[stage, left=0.5cm of reg] {\textsf{COMPLETION}};
+%
+% ===== EXCLUSION COLUMN (right) =====
+%
+\node[excl, right=of screen] (e1a)
+  {Set aside\\$n = 221$\\{\tiny 203 outside scope\,+\,16 superseded\,+\,2 overlap}};
+\draw[earr] (screen.east) -- (e1a.west);
 
-% --- Retrieval ---
-\node[box, below=of reg] (seek) {Reports sought for retrieval\\[1pt]\textbf{$n = 119$}};
-\node[excl, right=1.0cm of seek] (e2) {Not retrieved (E2)\\[1pt]$n = 27$\\{\scriptsize publisher blocks / failed verification}};
-\draw[arr] (reg) -- (seek);
-\draw[earr] (seek) -- (e2);
-\node[stage, left=0.5cm of seek] {\textsf{RETRIEVAL}};
+\node[excl, right=of reg] (e3)
+  {Already held (E3)\\$n = 40$};
+\draw[earr] (reg.east) -- (e3.west);
 
-% --- Eligibility ---
-\node[box, below=of seek] (elig) {Full texts assessed for eligibility\\[1pt]\textbf{$n = 92$}};
-\node[excl, right=1.0cm of elig] (e1b) {Excluded at full text (E1)\\[1pt]$n = 15$\\{\scriptsize no Hausa-specific content}};
-\draw[arr] (seek) -- (elig);
-\draw[earr] (elig) -- (e1b);
-\node[stage, left=0.5cm of elig] {\textsf{ELIGIBILITY}};
+\node[excl, right=of seek] (e2)
+  {Not retrieved (E2)\\$n = 27$};
+\draw[earr] (seek.east) -- (e2.west);
 
-% --- Included ---
-\node[box, fill=green!8, below=0.8cm of elig] (added) {Studies added by retrieval: $77$\\Studies contributed by completion pass: $124$\\{\scriptsize (77 retrieved $+$ 47 already verified outside v1)}};
-\draw[arr] (elig) -- (added);
+\node[excl, right=of elig] (e1b)
+  {Excluded at full text (E1)\\$n = 15$};
+\draw[earr] (elig.east) -- (e1b.west);
 
-\node[box, fill=green!12, line width=0.8pt, below=0.6cm of added] (final) {\textbf{153 studies included}\\[1pt]$29$ (v1 core) $+ \; 124$ (completion)};
-\draw[arr] (added) -- (final);
+%
+% ===== PARALLEL RESOURCE TRACK =====
+%
+\node[res, right=of final] (resbox)
+  {\textbf{41 resources}\\catalogued in parallel\\(R-01\,--\,R-41)};
+\draw[earr] (final.east) -- (resbox.west);
 
-% --- Resources (parallel track) ---
-\node[side, right=1.0cm of final] (res) {\textbf{41 resources}\\catalogued in parallel\\(R-01 to R-41)};
-\draw[earr] (final.east) -- (res.west);
-\node[stage, left=0.5cm of added] {\textsf{INCLUDED}};
-\end{tikzpicture}
-\caption{Study selection flow. The evidence base is a curated corpus maintained in two versions: version 1 (250 publications, quota-structured across eight thematic areas) was reduced by scope screening to a 29-study core, and a completion pass added the remaining studies; 41 resources were catalogued in parallel. Every per-record decision, with reason and route, is logged in \texttt{screening\_decisions.csv}; the counts are machine-readable in \texttt{selection\_counts.csv} and recompute mechanically from the log.}
+%
+% ===== STAGE LABELS (outside left, non-overlapping) =====
+%
+\node[stglabel, left=0.25cm of v1.west, anchor=east] {\textsc{Identification}};
+\node[stglabel, left=0.25cm of screen.west, anchor=east] {\textsc{Screening}};
+\node[stglabel, left=0.25cm of reg.west, anchor=east] {\textsc{Completion}};
+\node[stglabel, left=0.25cm of seek.west, anchor=east] {\textsc{Retrieval}};
+\node[stglabel, left=0.25cm of elig.west, anchor=east] {\textsc{Eligibility}};
+\node[stglabel, left=0.25cm of added.west, anchor=east] {\textsc{Included}};
+\end{tikzpicture}%
+}% end resizebox
+\caption{Study selection flow. The evidence base is a curated corpus maintained in two versions: version~1 (250 publications, quota-structured across eight thematic areas) was reduced by scope screening to a 29-study core, and a completion pass added the remaining studies; 41 resources were catalogued in parallel. Every per-record decision, with reason and route, is logged in \texttt{screening\_decisions.csv}; the counts are machine-readable in \texttt{selection\_counts.csv} and recompute mechanically from the log.}
 \label{fig:selection}
 \end{figure}
 \subsection{Data extraction}
