@@ -1,180 +1,169 @@
-Table~\ref{tab:inventory} lists every source retained in the final corpus, with its corpus identifier (used throughout the paper for sources without reliable bibliographic metadata), title, publication year, and the thematic block under which it is synthesised.
+Table~\ref{tab:inventory} lists every study retained in the final corpus, with its corpus identifier (\texttt{P-001}--\texttt{P-154}, minus \texttt{P-062}), full title, publication year, and the thematic block under which it is synthesised.
 
-\begin{longtable}{@{}p{0.075\textwidth} p{0.435\textwidth} p{0.06\textwidth} p{0.30\textwidth}@{}}
-\caption{Complete inventory of the 153 corpus sources. $^{\circ}$ = author metadata not confirmable from the source (e.g., an anonymised submission); the repository inventory carries the canonical link for every entry.}\label{tab:inventory} \\
+\begin{longtable}{@{}p{0.085\textwidth} p{0.445\textwidth} p{0.06\textwidth} p{0.28\textwidth}@{}}
+\caption{Complete inventory of the 153 included studies. $^{\circ}$ = double-blind or anonymised submission PDF; the repository inventory (\texttt{study\_inventory.csv}) carries the canonical link and metadata for every entry.}\label{tab:inventory} \\
 \toprule
 \textbf{ID} & \textbf{Title} & \textbf{Year} & \textbf{Thematic block} \\
 \midrule
 \endfirsthead
-\toprule
-\textbf{ID} & \textbf{Title} & \textbf{Year} & \textbf{Thematic block} \\
-\midrule
-\endhead
-\#001 & From Speech to Text Corpora: Evaluating ASR-Based Data Acquisition for Low-Resource Fongbe and Hausa & 2026 & IR, tokenization \& efficiency \\
-\#002 & HACS-TL: Cross-Script Transfer Learning for Hausa Ajami Hate Speech Detection Using Transformer-Based Architecture & 2026 & Multimodal \& Ajami-script \\
-\#003 & Tone and Length in an LKB-grammar of Hausa & 2009 & Foundations, surveys, community \& policy \\
-\#004 & A Systematic Literature Review of Hausa Natural Language Processing & 2021 & Foundations, surveys, community \& policy \\
-\#005 & HausaNLP: Current Status, Challenges and Future Directions for Hausa Natural Language Processing & 2025 & Foundations, surveys, community \& policy \\
-\#006 & NaijaNLP: A Survey of Nigerian Low-Resource Languages & 2025 & Foundations, surveys, community \& policy \\
-\#007 & A Survey of Text and Speech Resources for Hausa and Fongbe: Availability, Quality, and Gaps for NLP Development & 2026 & Foundations, surveys, community \& policy \\
-\#008 & CIRAL: A Test Collection for CLIR Evaluation in African Languages & 2024 & IR, tokenization \& efficiency \\
-\#009 & On Backbones and Training Regimes for Dense Retrieval in African Languages & 2024 & IR, tokenization \& efficiency \\
-\#010 & Improving BGE-M3 Multilingual Dense Embeddings for Nigerian Low Resource Languages & 2025 & IR, tokenization \& efficiency \\
-\#011 & From Translation to Retrieval: Evaluating LLM-Based Information Retrieval for Hausa and Fongbe & 2026 & IR, tokenization \& efficiency \\
-\#012 & The BELEBELE Benchmark: A Parallel Reading Comprehension Dataset in 122 Language Variants & 2024 & Pretrained LMs, LLMs \& benchmarks \\
-\#013 & IrokoBench: A New Benchmark for African Languages in the Age of Large Language Models & 2025 & Pretrained LMs, LLMs \& benchmarks \\
-\#014 & Lugha-Llama: Adapting Large Language Models for African Languages & 2025 & Pretrained LMs, LLMs \& benchmarks \\
-\#015 & Improving Multilingual Math Reasoning for African Languages & 2025 & Pretrained LMs, LLMs \& benchmarks \\
-\#016 & AfriMTEB and AfriE5: Benchmarking and Adapting Text Embedding Models for African Languages & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#017 & From Script to Semantics: Prompting Strategies for African NLI & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#018 & Sample-Size Scaling of the African Languages NLI Evaluation & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#019 & The African Language Tax & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#020 & HausaNLP at SemEval-2026 Task 7: Prompt-based Hausa Cultural Question Answering & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#021 & hauWE: Hausa Words Embedding for Natural Language Processing & 2019 & Corpora \& lexical resources \\
-\#022 & Abstract WordNet for 265 languages & 2025 & Corpora \& lexical resources \\
-\#023 & AjamiMorph: Zero-Annotation Morphological Discovery for Hausa Ajami via Multi-Method Consensus & 2026 & Corpora \& lexical resources \\
-\#024 & Mining Large Language Models for Low-Resource Language Data: Comparing Elicitation Strategies for Hausa and Fongbe & 2026 & Corpora \& lexical resources \\
-\#025 & HausaMT v1.0: Towards English-Hausa Neural Machine Translation & 2020 & Other \\
-\#026 & Adam Mickiewicz University's English-Hausa Submissions to the WMT 2021 News Translation Task & 2021 & Other \\
-\#027 & A Few Thousand Translations Go a Long Way! Leveraging Pre-trained Models for African News Translation & 2022 & Other \\
-\#028 & Enhancing COMET to Embrace Under-resourced African Languages & 2024 & Other \\
-\#029 & Evaluating WMT 2024 Metrics Shared Task Submissions on AfriMTE & 2024 & Other \\
-\#030 & AFRIDOC-MT: Document-level MT Corpus for African Languages & 2025 & Other \\
-\#031 & Evaluating WMT 2025 Metrics Shared Task Submissions on the SSA-MTE African Challenge Set & 2025 & Other \\
-\#032 & LLM-Assisted Auditing of Human Translations for Low-Resource African Languages & 2025 & Other \\
-\#033 & Evaluating Large Language Models for Hausa and Fongbe Machine Translation & 2026 & Other \\
-\#034 & Hausa Visual Genome: A Dataset for Multi-Modal English to Hausa Machine Translation & 2022 & Multimodal \& Ajami-script \\
-\#035 & HaVQA: A Dataset for Visual Question Answering and Multimodal Research in Hausa Language & 2023 & Multimodal \& Ajami-script \\
-\#036 & English-to-Low-Resource Translation: A Multimodal Approach for Hindi, Malayalam, Bengali, and Hausa & 2024 & Multimodal \& Ajami-script \\
-\#037 & Challenging Multimodal LLMs with African Standardized Exams: A Document VQA Evaluation & 2025 & Multimodal \& Ajami-script \\
-\#038 & Development of Hausa Dataset: A Baseline for Speech Recognition & 2022 & Speech technologies \\
-\#039 & BibleTTS: A Large, High-Fidelity, Multilingual, and Uniquely African Speech Corpus & 2022 & Speech technologies \\
-\#040 & Speech Resources in the Tamasheq Language & 2022 & Speech technologies \\
-\#041 & Synthetic Voice Data for Automatic Speech Recognition in African Languages & 2025 & Speech technologies \\
-\#042 & Voice of a Continent: Mapping Africa's Speech Technology Landscape & 2025 & Speech technologies \\
-\#043 & Automatic Speech Recognition (ASR) for African Low-Resource Languages: A Systematic Literature Review & 2025 & Speech technologies \\
-\#044 & Benchmarking Automatic Speech Recognition Models for African Languages & 2026 & Speech technologies \\
-\#045 & OpenBibleTTS: Large-Scale Speech Resources and TTS Models for African Languages & 2026 & Speech technologies \\
-\#046 & A Large-Scale Multilingual African Language Speech Corpus (WAXAL) & 2026 & Speech technologies \\
-\#047 & NaijaS2ST: A parallel speech translation dataset covering Igbo, Hausa, Yorùbá, and Nigerian Pidgin paired with English & 2026 & Speech technologies \\
-\#048 & A Dual-Stream Approach for Low-Resource Speech Translation & 2026 & Speech technologies \\
-\#049 & Tagging Part of Speech in Hausa Sentences & 2019 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#050 & Transfer Learning and Distant Supervision for Multilingual Transformer Models: A Study on African Languages & 2020 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#051 & MasakhaNER: Named Entity Recognition for African Languages & 2021 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#052 & A Corpus Based Transformation-Based Learning for Hausa Text Parts of Speech Tagging & 2021 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#053 & Multilingual Language Model Adaptive Fine-Tuning: A Study on African Languages & 2022 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#054 & Sentiment Analysis for Hausa: Classifying Students' Comments & 2022 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#055 & Part-of-Speech Tagging for Typologically Diverse African Languages & 2023 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#056 & HausaNLP at SemEval-2023 Task 12: Leveraging African Low Resource TweetData for Sentiment Analysis & 2023 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#057 & Graph-based Extractive Text Summarization Method for Hausa Text & 2023 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#058 & Detection and Analysis of Offensive Online Content in Hausa Language & 2023 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#059 & HausaHate: An Expert Annotated Corpus for Hausa Hate Speech Detection & 2024 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#060 & Transformer Based Abstractive Text Summarization for Hausa & 2024 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#061 & A Collection of Semantic Textual Relatedness Datasets for 13 Languages & 2024 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#063 & A Deep Convolutional Neural Network-based Model for Aspect and Polarity Classification in Hausa Movie Reviews & 2024 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#064 & Investigating the Impact of Language-Adaptive Fine-Tuning on Sentiment Analysis in Hausa Language Using AfriBERTa & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#065 & HausaNLP at SemEval-2025 Task 11: Advancing Hausa Text-based Emotion Detection & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#066 & Machine Learning Models for Hausa-Based Language (Words) Lemmatization & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#067 & Automatic Correction of Writing Anomalies in Hausa Texts & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#068 & Who Wrote This? Identifying Machine vs Human-Generated Text in Hausa & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#069 & HausaNLP at SemEval-2025 Task 2: Entity-Aware Fine-tuning vs. Prompt Engineering & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#070 & HausaNLP at SemEval-2025 Task 3: Towards a Fine-Grained Model-Aware Hallucination Detection & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#071 & AfriHate: A Multilingual Collection of Hate Speech and Abusive Language Datasets for African Languages & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#072 & AfroXLMR-Social: Adapting Pre-trained Language Models for African Languages Social Media Text & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#073 & HausaMovieReview: A Benchmark Dataset for Sentiment Analysis in a Low-Resource African Language & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#074 & Hybrid Neural Model for Hausa Text Auto Completion: Addressing Data Scarcity for a Low-Resource Language & 2026 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#075 & When Does Data Augmentation Help? Evaluating LLM and Back-Translation Methods for Hausa and Fongbe NLP & 2026 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#076 & Comparing Source Language Selection Strategies for Multi-Source Cross-Lingual Transfer to African Languages & 2026 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#077 & Natural Language Processing for African Languages & 2025 & Foundations, surveys, community \& policy \\
-\#078 & Charting the Landscape of African NLP: Mapping Progress and Shaping the Road Ahead & 2025 & Foundations, surveys, community \& policy \\
-\bottomrule
-\end{longtable}
-
-\begin{longtable}{@{}p{0.075\textwidth} p{0.435\textwidth} p{0.06\textwidth} p{0.30\textwidth}@{}}
 \multicolumn{4}{@{}l}{\emph{Table~\ref{tab:inventory} (continued)}} \\
 \toprule
 \textbf{ID} & \textbf{Title} & \textbf{Year} & \textbf{Thematic block} \\
 \midrule
-\endfirsthead
-\toprule
-\textbf{ID} & \textbf{Title} & \textbf{Year} & \textbf{Thematic block} \\
-\midrule
 \endhead
-\#079 & Participatory Research for Low-resourced Machine Translation: A Case Study in African Languages & 2020 & Foundations, surveys, community \& policy \\
-\#080 & Masakhane Web: A Machine Translation Platform for African Languages & 2023 & Foundations, surveys, community \& policy \\
-\#081 & The African Languages Lab: A Collaborative Approach to Advancing Low-Resource African NLP & 2026 & Foundations, surveys, community \& policy \\
-\#082 & Exploring Pragmatic Implications of Artificial Intelligence on Language, Learning, and Knowledge Construction: The Case  & 2025 & Foundations, surveys, community \& policy \\
-\#083 & The First Large Scale Collection of Diverse Hausa Language Datasets & 2021 & Corpora \& lexical resources \\
-\#084 & Better Quality Pre-training Data and T5 Models for African Languages (WURA) & 2023 & Corpora \& lexical resources \\
-\#085 & Curation of a Polysemous Word Dataset for Word Sense Disambiguation in Hausa Language & 2025 & Corpora \& lexical resources \\
-\#086 & Hausa WordNet: An Electronic Lexical Resource & 2019 & Corpora \& lexical resources \\
-\#087 & No Language Left Behind: Scaling Human-Centered Machine Translation & 2022 & Machine translation \& evaluation \\
-\#088 & Findings of the WMT'22 Shared Task on Large-Scale Machine Translation Evaluation for African Languages & 2022 & Machine translation \& evaluation \\
-\#089 & Separating Grains from the Chaff: Using Data Filtering to Improve Multilingual Translation for Low-resourced African Lan & 2022 & Machine translation \& evaluation \\
-\#090 & The Low-Resource Double Bind: An Empirical Study of Pruning for Low-Resource Machine Translation & 2021 & Machine translation \& evaluation \\
-\#091 & Are Small Language Models the Silver Bullet to Low-Resource Languages Machine Translation? & 2026 & Machine translation \& evaluation \\
-\#092 & SSA-COMET: Do LLMs Outperform Learned Metrics in Evaluating MT for Under-Resourced African Languages? & 2025 & Machine translation \& evaluation \\
-\#093 & Small Data? No Problem! Exploring the Viability of Pretrained Multilingual Language Models for Low-resourced Languages ( & 2021 & Pretrained LMs, LLMs \& benchmarks \\
-\#094 & Adapting Pre-trained Language Models to African Languages via Multilingual Adaptive Fine-Tuning (AfroXLMR) & 2022 & Pretrained LMs, LLMs \& benchmarks \\
-\#095 & AfroLM: A Self-Active Learning-Based Multilingual Pretrained Language Model for 23 African Languages & 2022 & Pretrained LMs, LLMs \& benchmarks \\
-\#096 & SERENGETI: Massively Multilingual Language Models for Africa & 2023 & Pretrained LMs, LLMs \& benchmarks \\
-\#097 & Mini but Mighty: Efficient Multilingual Pretraining with Linguistically-Informed Data Selection & 2023 & Pretrained LMs, LLMs \& benchmarks \\
-\#098 & Can Embedding Similarity Predict Cross-Lingual Transfer? A Systematic Study on African Languages & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#099 & AfroBench: How Good Are Large Language Models on African Languages? & 2025 & Pretrained LMs, LLMs \& benchmarks \\
-\#100 & InkubaLM: A Small Language Model for Low-Resource African Languages & 2024 & Pretrained LMs, LLMs \& benchmarks \\
-\#101 & Cheetah: Natural Language Generation for 517 African Languages & 2024 & Pretrained LMs, LLMs \& benchmarks \\
-\#102 & SabiYarn: Advancing Low Resource Languages with Multitask NLP Pretraining & 2025 & Pretrained LMs, LLMs \& benchmarks \\
-\#103 & AfriqueLLM: How Data Mixing and Model Architecture Impact Continued Pre-training for African Languages & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#104 & AfriInstruct: Instruction Tuning of African Languages for Diverse Tasks & 2024 & Pretrained LMs, LLMs \& benchmarks \\
-\#105 & Uhura: A Benchmark for Evaluating Scientific Question Answering and Truthfulness in Low-Resource African Languages & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#106 & Ibom NLP: A Step Toward Inclusive Natural Language Processing for Nigeria's Minority Languages & 2025 & Pretrained LMs, LLMs \& benchmarks \\
-\#107 & Translation as a Scalable Proxy for Multilingual Evaluation & 2026 & Pretrained LMs, LLMs \& benchmarks \\
-\#108 & SIB-200: A Simple, Inclusive, and Big Evaluation Dataset for Topic Classification in 200+ Languages and Dialects & 2024 & Pretrained LMs, LLMs \& benchmarks \\
-\#109 & MasakhaNEWS: News Topic Classification for African Languages & 2023 & Pretrained LMs, LLMs \& benchmarks \\
-\#110 & NaijaSenti: A Nigerian Twitter Sentiment Corpus for Multilingual Sentiment Analysis & 2022 & Pretrained LMs, LLMs \& benchmarks \\
-\#111 & AfriSenti: A Twitter Sentiment Analysis Benchmark for African Languages & 2023 & Pretrained LMs, LLMs \& benchmarks \\
-\#112 & MasakhaNER 2.0: Africa-Centric Transfer Learning for Named Entity Recognition & 2022 & Pretrained LMs, LLMs \& benchmarks \\
-\#113 & AfriQA: Cross-lingual Open-Retrieval Question Answering for African Languages & 2023 & Pretrained LMs, LLMs \& benchmarks \\
-\#114 & 2M-Belebele: Highly Multilingual Speech and American Sign Language Comprehension Dataset & 2025 & Pretrained LMs, LLMs \& benchmarks \\
-\#115 & Distant Supervision and Noisy Label Learning for Low Resource Named Entity Recognition: A Study on Hausa and Yoruba & 2020 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#116 & NaijaNER: Comprehensive Named Entity Recognition for 5 Nigerian Languages & 2021 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#117 & Development of a WAZOBIA-Named Entity Recognition System & 2025 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#118 & Analysing Cross-lingual Transfer in Low-resourced African Named Entity Recognition & 2023 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#119 & An Improved Hausa Word Stemming Algorithm & 2022 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#120 & Enhancing Hausa Words Lemmatization Through Feature Engineering & 2026 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#121 & AfriSUD: A Dependency Treebank Collection for Evaluating Models on African Languages & 2026 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#122 & HaG: A Computational Grammar of Hausa & 2012 & Text NLP (sequence labelling, sentiment, etc.) \\
-\#123 & Hausa Large Vocabulary Continuous Speech Recognition & 2012 & Speech technologies \\
-\#124 & SALAN: A Massive ASR Dataset for the Languages of Niger & 2026 & Speech technologies \\
-\#125 & AfriHuBERT: A Self-Supervised Speech Representation Model for African Languages & 2024 & Speech technologies \\
-\#126 & Building African Voices & 2022 & Speech technologies \\
-\#127 & The NaijaVoices Dataset: Cultivating Large-Scale, High-Quality, Culturally-Rich Speech Data for African Languages & 2025 & Speech technologies \\
-\#128 & WAXAL-NET: Finetuned Edge ASR Across 19 African Languages & 2026 & Speech technologies \\
-\#129 & Benchmarking Self-Supervised Speech Models on Multilingual Nigerian Speech & 2026 & Speech technologies \\
-\#130 & Reassessing Speech Translation for Low-Resource Languages: Do LLMs Redefine the State-of-the-Art Against Cascaded Models & 2025 & Speech technologies \\
-\#131 & AccentFold: A Journey Through African Accents for Zero-Shot ASR Adaptation & 2024 & Speech technologies \\
-\#132 & NollySenti: Leveraging Transfer Learning and Machine Translation for Nigerian Movie Sentiment Classification & 2023 & Speech technologies \\
-\#133 & Sentiment Analysis Across Multiple African Languages: A Current Benchmark & 2023 & Speech technologies \\
-\#134 & Taming Toxic Talk: Detecting Offensive Online Content in Hausa & 2024 & Speech technologies \\
-\#135 & Identification and Blocking of Hate Speech in English-Hausa Code-mixed Language on Facebook: A Hybrid Deep Learning Fram & 2025 & Speech technologies \\
-\#136 & Hausa Fake News Detection Using Lightweight Transformer Models with Adaptive Fine-Tuning in Low-Resource Settings & 2026 & Speech technologies \\
-\#137 & Hate Speech and Disinformation Detection Model in the Political Discourse of Hausa-Language & 2026 & Speech technologies \\
-\#138 & Hausa Hate Speech Detection Using Logistic Regression & 2026 & Speech technologies \\
-\#139 & A Multilingual Dataset for Offensive Language and Hate Speech Detection for Hausa, Yoruba and Igbo Languages & 2024 & Speech technologies \\
-\#140 & Cross-lingual Transfer and Multilingual Learning for Detecting Harmful Behaviour in African Under-resourced Language Dia & 2024 & Speech technologies \\
-\#141 & Language Choice in Nigerian Social Media Hate Speech & 2026 & Speech technologies \\
-\#142 & A Performance-Efficiency Analysis of Transformer Models for Code-mixed Hausa Sentiment Data & 2026 & Speech technologies \\
-\#143 & Enhancing Sentiment Analysis for Hausa Language with Improved Hausa Text Stemmer (HTS) and Machine Learning Models & 2025 & Speech technologies \\
-\#144 & Afri-MCQA: Multimodal Cultural Question Answering for African Languages & 2026 & Multimodal \& Ajami-script \\
-\#145 & Deep Neural Networks for the Recognition of Hausa Ajami Script & 2022 & Multimodal \& Ajami-script \\
-\#146 & Dual-BERT Adversarial Learning for Hausa User-Generated Text Normalization & 2026 & Multimodal \& Ajami-script \\
-\#147 & NigBench: A Multilingual Point-of-Care Medical Query Benchmarking Study of Large Language Models in Nigeria & 2026 & Multimodal \& Ajami-script \\
-\#148 & UbuntuGuard: A Culturally-Grounded Policy Benchmark for Equitable AI Safety in African Languages & 2026 & Multimodal \& Ajami-script \\
-\#149 & Multimodal Classification System for Hausa Using LLMs and Vision Transformers & 2025 & Multimodal \& Ajami-script \\
-\#150 & Comparative Analysis of Deep Learning and Transformer Models for Low Resource Hausa Language Text Summarization & 2026 & Multimodal \& Ajami-script \\
-\#151 & A Multi-task Learning Framework for Sentiment Analysis and News Classification for Low-Resource Language & 2026 & Multimodal \& Ajami-script \\
-\#152 & The Token Tax: Systematic Bias in Multilingual Tokenization & 2026 & IR, tokenization \& efficiency \\
-\#153 & AfroLID: A Neural Language Identification Tool for African Languages & 2022 & IR, tokenization \& efficiency \\
-\#154 & Text Categorization Can Enhance Domain-Agnostic Stopword Extraction & 2024 & IR, tokenization \& efficiency \\
 \bottomrule
+\endfoot
+P-001 & From Speech to Text Corpora: Evaluating ASR-Based Data Acquisition for Low-Resource Fongbe and Hausa & 2026 & Speech technologies \\
+P-002 & HACS-TL: Cross-Script Transfer Learning for Hausa Ajami Hate Speech Detection Using Transformer-Based Architecture & 2026 & Multimodal, Ajami-script \& applications \\
+P-003 & Tone and Length in an LKB-grammar of Hausa & 2009 & Foundations, surveys, community \& policy \\
+P-004 & A Systematic Literature Review of Hausa Natural Language Processing & 2021 & Foundations, surveys, community \& policy \\
+P-005 & HausaNLP: Current Status, Challenges and Future Directions for Hausa Natural Language Processing & 2025 & Foundations, surveys, community \& policy \\
+P-006 & NaijaNLP: A Survey of Nigerian Low-Resource Languages & 2025 & Foundations, surveys, community \& policy \\
+P-007 & A Survey of Text and Speech Resources for Hausa and Fongbe: Availability, Quality, and Gaps for NLP Development & 2026 & Foundations, surveys, community \& policy \\
+P-008 & CIRAL: A Test Collection for CLIR Evaluation in African Languages & 2024 & IR, tokenization, LID \& efficiency \\
+P-009 & On Backbones and Training Regimes for Dense Retrieval in African Languages & 2024 & IR, tokenization, LID \& efficiency \\
+P-010 & Improving BGE-M3 Multilingual Dense Embeddings for Nigerian Low Resource Languages & 2025 & IR, tokenization, LID \& efficiency \\
+P-011 & From Translation to Retrieval: Evaluating LLM-Based Information Retrieval for Hausa and Fongbe & 2026 & IR, tokenization, LID \& efficiency \\
+P-012 & The BELEBELE Benchmark: A Parallel Reading Comprehension Dataset in 122 Language Variants & 2024 & Pretrained LMs, LLMs \& benchmarks \\
+P-013 & IrokoBench: A New Benchmark for African Languages in the Age of Large Language Models & 2025 & Pretrained LMs, LLMs \& benchmarks \\
+P-014 & Lugha-Llama: Adapting Large Language Models for African Languages & 2025 & Pretrained LMs, LLMs \& benchmarks \\
+P-015 & Improving Multilingual Math Reasoning for African Languages & 2025 & Pretrained LMs, LLMs \& benchmarks \\
+P-016 & AfriMTEB and AfriE5: Benchmarking and Adapting Text Embedding Models for African Languages & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-017 & From Script to Semantics: Prompting Strategies for African NLI & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-018 & Sample-Size Scaling of the African Languages NLI Evaluation & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-019 & The African Language Tax & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-020 & HausaNLP at SemEval-2026 Task 7: Prompt-based Hausa Cultural Question Answering & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-021 & hauWE: Hausa Words Embedding for Natural Language Processing & 2019 & Corpora \& lexical resources \\
+P-022 & Abstract WordNet for 265 languages & 2025 & Corpora \& lexical resources \\
+P-023 & AjamiMorph: Zero-Annotation Morphological Discovery for Hausa Ajami via Multi-Method Consensus & 2026 & Corpora \& lexical resources \\
+P-024 & Mining Large Language Models for Low-Resource Language Data: Comparing Elicitation Strategies for Hausa and Fongbe & 2026 & Corpora \& lexical resources \\
+P-025 & HausaMT v1.0: Towards English-Hausa Neural Machine Translation & 2020 & Machine translation \& evaluation \\
+P-026 & Adam Mickiewicz University’s English-Hausa Submissions to the WMT 2021 News Translation Task & 2021 & Machine translation \& evaluation \\
+P-027 & A Few Thousand Translations Go a Long Way! Leveraging Pre-trained Models for African News Translation & 2022 & Machine translation \& evaluation \\
+P-028 & Enhancing COMET to Embrace Under-resourced African Languages & 2024 & Machine translation \& evaluation \\
+P-029 & Evaluating WMT 2024 Metrics Shared Task Submissions on AfriMTE & 2024 & Machine translation \& evaluation \\
+P-030 & AFRIDOC-MT: Document-level MT Corpus for African Languages & 2025 & Machine translation \& evaluation \\
+P-031 & Evaluating WMT 2025 Metrics Shared Task Submissions on the SSA-MTE African Challenge Set & 2025 & Machine translation \& evaluation \\
+P-032$^{\circ}$ & LLM-Assisted Auditing of Human Translations for Low-Resource African Languages & 2025 & Machine translation \& evaluation \\
+P-033 & Evaluating Large Language Models for Hausa and Fongbe Machine Translation & 2026 & Machine translation \& evaluation \\
+P-034 & Hausa Visual Genome: A Dataset for Multi-Modal English to Hausa Machine Translation & 2022 & Multimodal, Ajami-script \& applications \\
+P-035 & HaVQA: A Dataset for Visual Question Answering and Multimodal Research in Hausa Language & 2023 & Multimodal, Ajami-script \& applications \\
+P-036 & English-to-Low-Resource Translation: A Multimodal Approach for Hindi, Malayalam, Bengali, and Hausa & 2024 & Multimodal, Ajami-script \& applications \\
+P-037 & Challenging Multimodal LLMs with African Standardized Exams: A Document VQA Evaluation & 2025 & Multimodal, Ajami-script \& applications \\
+P-038 & Development of Hausa Dataset: A Baseline for Speech Recognition & 2022 & Speech technologies \\
+P-039 & BibleTTS: A Large, High-Fidelity, Multilingual, and Uniquely African Speech Corpus & 2022 & Speech technologies \\
+P-040 & Speech Resources in the Tamasheq Language & 2022 & Speech technologies \\
+P-041 & Synthetic Voice Data for Automatic Speech Recognition in African Languages & 2025 & Speech technologies \\
+P-042 & Voice of a Continent: Mapping Africa’s Speech Technology Landscape & 2025 & Speech technologies \\
+P-043 & Automatic Speech Recognition (ASR) for African Low-Resource Languages: A Systematic Literature Review & 2025 & Speech technologies \\
+P-044 & Benchmarking Automatic Speech Recognition Models for African Languages & 2026 & Speech technologies \\
+P-045 & OpenBibleTTS: Large-Scale Speech Resources and TTS Models for African Languages & 2026 & Speech technologies \\
+P-046 & A Large-Scale Multilingual African Language Speech Corpus (WAXAL) & 2026 & Speech technologies \\
+P-047 & NaijaS2ST: A parallel speech translation dataset covering Igbo, Hausa, Yorùbá, and Nigerian Pidgin paired with English & 2026 & Speech technologies \\
+P-048 & A Dual-Stream Approach for Low-Resource Speech Translation & 2026 & Speech technologies \\
+P-049 & Tagging Part of Speech in Hausa Sentences & 2019 & Text NLP (labelling, summarisation, correction) \\
+P-050 & Transfer Learning and Distant Supervision for Multilingual Transformer Models: A Study on African Languages & 2020 & Text NLP (labelling, summarisation, correction) \\
+P-051 & MasakhaNER: Named Entity Recognition for African Languages & 2021 & Text NLP (labelling, summarisation, correction) \\
+P-052 & A Corpus Based Transformation-Based Learning for Hausa Text Parts of Speech Tagging & 2021 & Text NLP (labelling, summarisation, correction) \\
+P-053 & Multilingual Language Model Adaptive Fine-Tuning: A Study on African Languages & 2022 & Text NLP (labelling, summarisation, correction) \\
+P-054 & Sentiment Analysis for Hausa: Classifying Students' Comments & 2022 & Text NLP (labelling, summarisation, correction) \\
+P-055 & Part-of-Speech Tagging for Typologically Diverse African Languages & 2023 & Text NLP (labelling, summarisation, correction) \\
+P-056 & HausaNLP at SemEval-2023 Task 12: Leveraging African Low Resource TweetData for Sentiment Analysis & 2023 & Text NLP (labelling, summarisation, correction) \\
+P-057 & Graph-based Extractive Text Summarization Method for Hausa Text & 2023 & Text NLP (labelling, summarisation, correction) \\
+P-058 & Detection and Analysis of Offensive Online Content in Hausa Language & 2023 & Text NLP (labelling, summarisation, correction) \\
+P-059 & HausaHate: An Expert Annotated Corpus for Hausa Hate Speech Detection & 2024 & Text NLP (labelling, summarisation, correction) \\
+P-060 & Transformer Based Abstractive Text Summarization for Hausa & 2024 & Text NLP (labelling, summarisation, correction) \\
+P-061 & A Collection of Semantic Textual Relatedness Datasets for 13 Languages & 2024 & Text NLP (labelling, summarisation, correction) \\
+P-063 & A Deep Convolutional Neural Network-based Model for Aspect and Polarity Classification in Hausa Movie Reviews & 2024 & Text NLP (labelling, summarisation, correction) \\
+P-064 & Investigating the Impact of Language-Adaptive Fine-Tuning on Sentiment Analysis in Hausa Language Using AfriBERTa & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-065 & HausaNLP at SemEval-2025 Task 11: Advancing Hausa Text-based Emotion Detection & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-066 & Machine Learning Models for Hausa-Based Language (Words) Lemmatization & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-067 & Automatic Correction of Writing Anomalies in Hausa Texts & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-068 & Who Wrote This? Identifying Machine vs Human-Generated Text in Hausa & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-069 & HausaNLP at SemEval-2025 Task 2: Entity-Aware Fine-tuning vs. Prompt Engineering & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-070 & HausaNLP at SemEval-2025 Task 3: Towards a Fine-Grained Model-Aware Hallucination Detection & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-071 & AfriHate: A Multilingual Collection of Hate Speech and Abusive Language Datasets for African Languages & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-072 & AfroXLMR-Social: Adapting Pre-trained Language Models for African Languages Social Media Text & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-073 & HausaMovieReview: A Benchmark Dataset for Sentiment Analysis in a Low-Resource African Language & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-074 & Hybrid Neural Model for Hausa Text Auto Completion: Addressing Data Scarcity for a Low-Resource Language & 2026 & Text NLP (labelling, summarisation, correction) \\
+P-075 & When Does Data Augmentation Help? Evaluating LLM and Back-Translation Methods for Hausa and Fongbe NLP & 2026 & Text NLP (labelling, summarisation, correction) \\
+P-076 & Comparing Source Language Selection Strategies for Multi-Source Cross-Lingual Transfer to African Languages & 2026 & Text NLP (labelling, summarisation, correction) \\
+P-077 & Natural Language Processing for African Languages & 2025 & Foundations, surveys, community \& policy \\
+P-078 & Charting the Landscape of African NLP: Mapping Progress and Shaping the Road Ahead & 2025 & Foundations, surveys, community \& policy \\
+P-079 & Participatory Research for Low-resourced Machine Translation: A Case Study in African Languages & 2020 & Foundations, surveys, community \& policy \\
+P-080 & Masakhane Web: A Machine Translation Platform for African Languages & 2023 & Foundations, surveys, community \& policy \\
+P-081 & The African Languages Lab: A Collaborative Approach to Advancing Low-Resource African NLP & 2026 & Foundations, surveys, community \& policy \\
+P-082 & Exploring Pragmatic Implications of Artificial Intelligence on Language, Learning, and Knowledge Construction: The Case of Hausa & 2025 & Foundations, surveys, community \& policy \\
+P-083 & The First Large Scale Collection of Diverse Hausa Language Datasets & 2021 & Corpora \& lexical resources \\
+P-084 & Better Quality Pre-training Data and T5 Models for African Languages (WURA) & 2023 & Corpora \& lexical resources \\
+P-085 & Curation of a Polysemous Word Dataset for Word Sense Disambiguation in Hausa Language & 2025 & Corpora \& lexical resources \\
+P-086 & Hausa WordNet: An Electronic Lexical Resource & 2019 & Corpora \& lexical resources \\
+P-087 & No Language Left Behind: Scaling Human-Centered Machine Translation & 2022 & Machine translation \& evaluation \\
+P-088 & Findings of the WMT'22 Shared Task on Large-Scale Machine Translation Evaluation for African Languages & 2022 & Machine translation \& evaluation \\
+P-089 & Separating Grains from the Chaff: Using Data Filtering to Improve Multilingual Translation for Low-resourced African Languages & 2022 & Machine translation \& evaluation \\
+P-090 & The Low-Resource Double Bind: An Empirical Study of Pruning for Low-Resource Machine Translation & 2021 & Machine translation \& evaluation \\
+P-091 & Are Small Language Models the Silver Bullet to Low-Resource Languages Machine Translation? & 2026 & Machine translation \& evaluation \\
+P-092 & SSA-COMET: Do LLMs Outperform Learned Metrics in Evaluating MT for Under-Resourced African Languages? & 2025 & Machine translation \& evaluation \\
+P-093 & Small Data? No Problem! Exploring the Viability of Pretrained Multilingual Language Models for Low-resourced Languages (AfriBERTa) & 2021 & Pretrained LMs, LLMs \& benchmarks \\
+P-094 & Adapting Pre-trained Language Models to African Languages via Multilingual Adaptive Fine-Tuning (AfroXLMR) & 2022 & Pretrained LMs, LLMs \& benchmarks \\
+P-095 & AfroLM: A Self-Active Learning-Based Multilingual Pretrained Language Model for 23 African Languages & 2022 & Pretrained LMs, LLMs \& benchmarks \\
+P-096 & SERENGETI: Massively Multilingual Language Models for Africa & 2023 & Pretrained LMs, LLMs \& benchmarks \\
+P-097 & Mini but Mighty: Efficient Multilingual Pretraining with Linguistically-Informed Data Selection & 2023 & Pretrained LMs, LLMs \& benchmarks \\
+P-098 & Can Embedding Similarity Predict Cross-Lingual Transfer? A Systematic Study on African Languages & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-099 & AfroBench: How Good Are Large Language Models on African Languages? & 2025 & Pretrained LMs, LLMs \& benchmarks \\
+P-100 & InkubaLM: A Small Language Model for Low-Resource African Languages & 2024 & Pretrained LMs, LLMs \& benchmarks \\
+P-101 & Cheetah: Natural Language Generation for 517 African Languages & 2024 & Pretrained LMs, LLMs \& benchmarks \\
+P-102 & SabiYarn: Advancing Low Resource Languages with Multitask NLP Pretraining & 2025 & Pretrained LMs, LLMs \& benchmarks \\
+P-103 & AfriqueLLM: How Data Mixing and Model Architecture Impact Continued Pre-training for African Languages & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-104 & AfriInstruct: Instruction Tuning of African Languages for Diverse Tasks & 2024 & Pretrained LMs, LLMs \& benchmarks \\
+P-105 & Uhura: A Benchmark for Evaluating Scientific Question Answering and Truthfulness in Low-Resource African Languages & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-106 & Ibom NLP: A Step Toward Inclusive Natural Language Processing for Nigeria's Minority Languages & 2025 & Pretrained LMs, LLMs \& benchmarks \\
+P-107 & Translation as a Scalable Proxy for Multilingual Evaluation & 2026 & Pretrained LMs, LLMs \& benchmarks \\
+P-108 & SIB-200: A Simple, Inclusive, and Big Evaluation Dataset for Topic Classification in 200+ Languages and Dialects & 2024 & Pretrained LMs, LLMs \& benchmarks \\
+P-109 & MasakhaNEWS: News Topic Classification for African Languages & 2023 & Pretrained LMs, LLMs \& benchmarks \\
+P-110 & NaijaSenti: A Nigerian Twitter Sentiment Corpus for Multilingual Sentiment Analysis & 2022 & Pretrained LMs, LLMs \& benchmarks \\
+P-111 & AfriSenti: A Twitter Sentiment Analysis Benchmark for African Languages & 2023 & Pretrained LMs, LLMs \& benchmarks \\
+P-112 & MasakhaNER 2.0: Africa-Centric Transfer Learning for Named Entity Recognition & 2022 & Pretrained LMs, LLMs \& benchmarks \\
+P-113 & AfriQA: Cross-lingual Open-Retrieval Question Answering for African Languages & 2023 & Pretrained LMs, LLMs \& benchmarks \\
+P-114 & 2M-Belebele: Highly Multilingual Speech and American Sign Language Comprehension Dataset & 2025 & Pretrained LMs, LLMs \& benchmarks \\
+P-115 & Distant Supervision and Noisy Label Learning for Low Resource Named Entity Recognition: A Study on Hausa and Yoruba & 2020 & Text NLP (labelling, summarisation, correction) \\
+P-116 & NaijaNER: Comprehensive Named Entity Recognition for 5 Nigerian Languages & 2021 & Text NLP (labelling, summarisation, correction) \\
+P-117 & Development of a WAZOBIA-Named Entity Recognition System & 2025 & Text NLP (labelling, summarisation, correction) \\
+P-118 & Analysing Cross-lingual Transfer in Low-resourced African Named Entity Recognition & 2023 & Text NLP (labelling, summarisation, correction) \\
+P-119 & An Improved Hausa Word Stemming Algorithm & 2022 & Text NLP (labelling, summarisation, correction) \\
+P-120 & Enhancing Hausa Words Lemmatization Through Feature Engineering & 2026 & Text NLP (labelling, summarisation, correction) \\
+P-121 & AfriSUD: A Dependency Treebank Collection for Evaluating Models on African Languages & 2026 & Text NLP (labelling, summarisation, correction) \\
+P-122 & HaG: A Computational Grammar of Hausa & 2012 & Text NLP (labelling, summarisation, correction) \\
+P-123 & Hausa Large Vocabulary Continuous Speech Recognition & 2012 & Speech technologies \\
+P-124 & SALAN: A Massive ASR Dataset for the Languages of Niger & 2026 & Speech technologies \\
+P-125 & AfriHuBERT: A Self-Supervised Speech Representation Model for African Languages & 2024 & Speech technologies \\
+P-126 & Building African Voices & 2022 & Speech technologies \\
+P-127 & The NaijaVoices Dataset: Cultivating Large-Scale, High-Quality, Culturally-Rich Speech Data for African Languages & 2025 & Speech technologies \\
+P-128 & WAXAL-NET: Finetuned Edge ASR Across 19 African Languages & 2026 & Speech technologies \\
+P-129$^{\circ}$ & Benchmarking Self-Supervised Speech Models on Multilingual Nigerian Speech & 2026 & Speech technologies \\
+P-130 & Reassessing Speech Translation for Low-Resource Languages: Do LLMs Redefine the State-of-the-Art Against Cascaded Models? & 2025 & Speech technologies \\
+P-131 & AccentFold: A Journey Through African Accents for Zero-Shot ASR Adaptation & 2024 & Speech technologies \\
+P-132 & NollySenti: Leveraging Transfer Learning and Machine Translation for Nigerian Movie Sentiment Classification & 2023 & Sentiment, hate speech \& misinformation \\
+P-133 & Sentiment Analysis Across Multiple African Languages: A Current Benchmark & 2023 & Sentiment, hate speech \& misinformation \\
+P-134 & Taming Toxic Talk: Detecting Offensive Online Content in Hausa & 2024 & Sentiment, hate speech \& misinformation \\
+P-135 & Identification and Blocking of Hate Speech in English-Hausa Code-mixed Language on Facebook: A Hybrid Deep Learning Framework & 2025 & Sentiment, hate speech \& misinformation \\
+P-136 & Hausa Fake News Detection Using Lightweight Transformer Models with Adaptive Fine-Tuning in Low-Resource Settings & 2026 & Sentiment, hate speech \& misinformation \\
+P-137 & Hate Speech and Disinformation Detection Model in the Political Discourse of Hausa-Language & 2026 & Sentiment, hate speech \& misinformation \\
+P-138 & Hausa Hate Speech Detection Using Logistic Regression & 2026 & Sentiment, hate speech \& misinformation \\
+P-139 & A Multilingual Dataset for Offensive Language and Hate Speech Detection for Hausa, Yoruba and Igbo Languages & 2024 & Sentiment, hate speech \& misinformation \\
+P-140 & Cross-lingual Transfer and Multilingual Learning for Detecting Harmful Behaviour in African Under-resourced Language Dialogue & 2024 & Sentiment, hate speech \& misinformation \\
+P-141 & Language Choice in Nigerian Social Media Hate Speech & 2026 & Sentiment, hate speech \& misinformation \\
+P-142 & A Performance-Efficiency Analysis of Transformer Models for Code-mixed Hausa Sentiment Data & 2026 & IR, tokenization, LID \& efficiency \\
+P-143 & Enhancing Sentiment Analysis for Hausa Language with Improved Hausa Text Stemmer (HTS) and Machine Learning Models & 2025 & Sentiment, hate speech \& misinformation \\
+P-144 & Afri-MCQA: Multimodal Cultural Question Answering for African Languages & 2026 & Multimodal, Ajami-script \& applications \\
+P-145 & Deep Neural Networks for the Recognition of Hausa Ajami Script & 2022 & Multimodal, Ajami-script \& applications \\
+P-146 & Dual-BERT Adversarial Learning for Hausa User-Generated Text Normalization & 2026 & Multimodal, Ajami-script \& applications \\
+P-147 & NigBench: A Multilingual Point-of-Care Medical Query Benchmarking Study of Large Language Models in Nigeria & 2026 & Multimodal, Ajami-script \& applications \\
+P-148 & UbuntuGuard: A Culturally-Grounded Policy Benchmark for Equitable AI Safety in African Languages & 2026 & Multimodal, Ajami-script \& applications \\
+P-149 & Multimodal Classification System for Hausa Using LLMs and Vision Transformers & 2025 & Multimodal, Ajami-script \& applications \\
+P-150 & Comparative Analysis of Deep Learning and Transformer Models for Low Resource Hausa Language Text Summarization & 2026 & Text NLP (labelling, summarisation, correction) \\
+P-151 & A Multi-task Learning Framework for Sentiment Analysis and News Classification for Low-Resource Language & 2026 & Sentiment, hate speech \& misinformation \\
+P-152 & The Token Tax: Systematic Bias in Multilingual Tokenization & 2026 & IR, tokenization, LID \& efficiency \\
+P-153 & AfroLID: A Neural Language Identification Tool for African Languages & 2022 & IR, tokenization, LID \& efficiency \\
+P-154 & Text Categorization Can Enhance Domain-Agnostic Stopword Extraction & 2024 & IR, tokenization, LID \& efficiency \\
 \end{longtable}

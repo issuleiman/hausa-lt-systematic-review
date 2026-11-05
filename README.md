@@ -26,7 +26,7 @@ data/
   corpus_v1.xlsx               version-1 corpus (250 quota-structured publications)
   selection_counts.csv         counts for every stage of the study-selection flow
   screening_decisions.csv      one row per record: stream, decision, reason, retrieval
-                               route, and study ID (409 rows)
+                               route, and study ID (472 rows)
   study_inventory.csv          the 153 included studies with metadata, thematic block,
                                per-study insight, paper section, and QA scores
   quality_assessment.csv       the five-item bibliographic rubric, scored per study
@@ -39,7 +39,7 @@ data/
 docs/
   CHANGELOG_LRE.md             detailed change log for the LRE submission
 corpus_construction.md         provenance record: corpus v1 (250), scope screening
-                               (250 -> 29), completion pass (159 -> 125), and timestamps
+                               (250 -> 29), completion pass (63 working collection + 159 register -> 124 net studies), and timestamps
 latex/                         full LaTeX source of the review (main.tex, refs.bib,
                                figures, appendix, and Springer Nature class files)
 .zenodo.json                   Zenodo deposit metadata
@@ -49,7 +49,7 @@ LICENSE                        CC BY 4.0
 
 ## Study IDs
 
-`P-001` ... `P-153` are stable identifiers for the included studies, assigned in the
+`P-001` ... `P-154` (minus `P-062`, 153 studies total) are stable identifiers for the included studies, assigned in the
 final synthesis order. Several studies whose author metadata could not be confirmed
 from the source PDF are cited in the paper by title and year; their canonical links
 are in `study_inventory.csv`. Resource records are `R-01` ... `R-41`.

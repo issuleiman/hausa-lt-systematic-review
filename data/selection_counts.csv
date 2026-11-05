@@ -1,16 +1,20 @@
 stage,item,count,basis
-identification,"version-1 corpus (quota-structured, 8 areas)",250,corpus_v1.xlsx
+identification,"version-1 corpus (quota-structured, 8 areas)",250,corpus_v1.xlsx (V1-001 to V1-250)
 screening,records assessed against scope criteria,250,all v1 records
 screening,set aside at scope screening,221,203 outside scope (E1) + 16 Hausa-area superseded + 2 overlapping (E3)
-screening,direct-contribution core retained,29,29 = 250 - 221
-completion,completion register compiled,159,systematic venue and community monitoring
-completion,already held and verified (E3),40,159 - 119
+screening,direct-contribution core retained,29,29 = 250 - 221 (13 in P-001..P-076 + 16 in P-077..P-153)
+completion,pre-held working collection outside v1 assessed,63,WC-001 to WC-063 (76 in 01..76 minus 13 in v1 core)
+completion,working-collection record failing PDF verification (E2),1,P-062 (WC-050): held PDF contained wrong article; publisher copy unobtainable
+completion,verified studies retained from working collection outside v1,62,62 = 63 - 1 (completing the 75 included studies in P-001..P-076)
+completion,completion register compiled,159,REG-001 to REG-160 (systematic venue and community monitoring)
+completion,already held and verified in working collection (E3),40,159 - 119
 completion,reports sought for retrieval,119,119 = 159 - 40
-retrieval,reports not retrieved (E2),27,publisher blocks or retrieval failed verification; no open-access mirror
-retrieval,reports retrieved,92,92 = 119 - 27
-eligibility,reports assessed for eligibility,92,full texts read against I1-I4
-eligibility,excluded at full text (E1),15,no Hausa-specific content in extractable text
-included,studies added by retrieval,77,77 = 92 - 15
-included,studies contributed by the completion pass,124,77 retrieved + 47 already verified outside v1
-included,studies included in the review (version 2),153,29 (v1 core) + 124 (completion)
+retrieval,reports not retrieved due to publisher blocks (E2),26,publisher blocks automated access; no open-access mirror found
+retrieval,reports retrieved,93,93 = 119 - 26 (files 77..169 in version_1)
+eligibility,reports assessed for eligibility,93,full texts read against I1-I4
+eligibility,excluded at full text (E1),15,no Hausa-specific content in extractable text (files 155..169 in version_1)
+eligibility,eligible full texts from completion register (P-077..P-154),78,78 = 93 - 15 (16 already counted in v1 core + 62 net new studies)
+included,net new studies added by completion register retrieval,62,62 = 78 eligible - 16 consolidated with v1 core (E3)
+included,studies contributed by the completion pass (net of v1 core),124,62 retrieved net of v1 + 62 verified working collection outside v1
+included,studies included in the review (version 2),153,29 (v1 core) + 124 (completion pass) = 75 (P-001..P-076) + 78 (P-077..P-154)
 included,resources catalogued in parallel,41,resource register R-01 to R-41

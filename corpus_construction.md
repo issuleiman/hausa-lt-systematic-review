@@ -27,7 +27,7 @@ verifies these targets against the achieved counts.
 
 ## Scope screening (250 -> 29)
 
-Every record was assessed against the scope criteria (paper Table 4) for direct
+Every record was assessed against the scope criteria (paper Table 3) for direct
 contribution to the review's goal. Outcome, logged per record in
 `data/screening_decisions.csv` (rows V1-001 to V1-250):
 
@@ -42,30 +42,41 @@ Per-area discard counts come from each record's recorded area field.
 
 ## Completion pass and retrieval (29 -> 153)
 
-A structured completion register of 159 candidate records (same metadata fields as
-v1) was compiled from systematic monitoring of the venues and communities where
-Hausa work appears. Platform distribution: 101/159 (63.5%) resolve to the ACL
-Anthology (68) and arXiv (33); the remainder spread across ~30 further platforms
-(ResearchGate 8, OpenReview 6, IEEE Xplore 3, Research Square 3, MIT Press/TACL 3,
-Academia.edu 2, AJOL 2, PLOS 2, and regional African journals among others).
+The completion pass combined the **63 pre-held working-collection records** outside v1
+(`WC-001` to `WC-063`) with a structured completion register of **159 candidate records**
+(`REG-001` to `REG-160`, same metadata fields as v1) compiled from systematic monitoring
+of the venues and communities where Hausa work appears. Platform distribution of the
+159-record register: 101/159 (63.5%) resolve to the ACL Anthology (68) and arXiv (33);
+the remainder spread across ~30 further platforms (ResearchGate 8, OpenReview 6,
+IEEE Xplore 3, Research Square 3, MIT Press/TACL 3, Academia.edu 2, AJOL 2, PLOS 2,
+and regional African journals among others).
 
-- 40 of 159 candidates described works already held with verified full texts (E3).
-- The remaining 119 were pursued in a single scripted retrieval run on
+- In the 63-record working collection outside v1, **62 full texts** passed verification
+  and were retained (completing the 75 included studies in `P-001`..`P-076`), while
+  **1 record** (`P-062`, `WC-050`, a Hausa stopwords study whose held PDF contained a
+  different journal article and whose publisher copy was not retrievable) was excluded
+  under E2.
+- In the 159-record completion register, **40 candidates** described works already held
+  and verified in the working collection (E3).
+- The remaining **119 candidates** were pursued in a single scripted retrieval run on
   **5 October 2026 (UTC)** with strict PDF validation (file signature and minimum
   size), publisher-specific fallbacks, and open-access metadata lookups.
-- Outcome: 92 full texts retrieved; 27 candidates not retrieved or failing verification and excluded
-  under E2 (publisher blocks: ResearchGate, OpenReview, IEEE Xplore, MIT Press,
+- Outcome: **93 full texts retrieved**; **26 candidates not retrieved** due to publisher
+  blocks and excluded under E2 (ResearchGate, OpenReview, IEEE Xplore, MIT Press,
   ScienceDirect, AJOL, Academia.edu, Cell Press, JMIR, Preprints.org, and others).
-- Of the 92 retrieved, 15 fell outside the direct scope at the eligibility check (E1),
-  leaving 77 studies added by retrieval.
-- Together with 47 studies already held and verified outside v1, the completion
-  pass contributed 124 studies.
+- Of the 93 retrieved, **15 fell outside the direct scope** at the full-text eligibility
+  check (E1), leaving **78 eligible full texts** (`P-077`..`P-154`), of which **16**
+  corroborated records already counted in the 29-study v1 core (E3) and **62 were net
+  new studies added by retrieval**.
+- Together with the 62 verified studies from the working collection outside v1, the
+  completion pass contributed **124 net studies** (`62 + 62 = 124`).
 
 ## Final corpus (version 2)
 
-29 (v1 core) + 125 (completion) = **153 studies**, plus a parallel catalogue of
-**41 resources** (R-01 to R-41). Every per-record decision, with reason, route, and
-the study identifier it became, is in `data/screening_decisions.csv` (409 rows);
+29 (v1 core) + 124 (completion pass) = **153 studies** (75 in `P-001`..`P-076` minus
+`P-062`, plus 78 in `P-077`..`P-154`), alongside a parallel catalogue of
+**41 resources** (`R-01` to `R-41`). Every per-record decision, with reason, route, and
+the unique study identifier it became, is in `data/screening_decisions.csv` (472 rows);
 the counts recompute mechanically from that log and are summarised in
 `data/selection_counts.csv`.
 
