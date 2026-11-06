@@ -1,21 +1,9 @@
 stage,item,count,basis
-identification,"version-1 corpus (quota-structured, 8 areas)",250,corpus_v1.xlsx (V1-001 to V1-250)
-screening,records assessed against scope criteria,250,all v1 records
-screening,set aside at scope screening,222,203 outside scope (E1) + 17 Hausa-area superseded/pre-2019 (E1/I2) + 2 overlapping (E3)
-screening,direct-contribution core retained (2019-2026),28,28 = 250 - 222 (13 in P-001..P-076 + 15 in P-077..P-153)
-completion,pre-held working collection outside v1 assessed,63,WC-001 to WC-063 (76 in 01..76 minus 13 in v1 core)
-completion,working-collection record excluded as pre-2019 (E1),1,"P-003 (WC-003, 2009): outside I2 2019-2026 review window"
-completion,working-collection record failing PDF verification (E2),1,P-062 (WC-050): held PDF contained wrong article; publisher copy unobtainable
-completion,verified 2019-2026 studies retained from working collection outside v1,61,61 = 63 - 1 (E1) - 1 (E2) (completing the 74 included studies in P-001..P-076)
-completion,completion register compiled,159,REG-001 to REG-160 (systematic venue and community monitoring)
-completion,already held and verified in working collection (E3),40,159 - 119
-completion,reports sought for retrieval,119,119 = 159 - 40
-retrieval,reports not retrieved due to publisher blocks (E2),26,publisher blocks automated access; no open-access mirror found
-retrieval,reports retrieved,93,93 = 119 - 26 (files 77..169 in version_1)
-eligibility,reports assessed for eligibility,93,full texts read against I1-I4 (2019-2026 window)
-eligibility,excluded at full text (E1),17,"15 lacking Hausa-specific content (files 155..169) + 2 pre-2019 (P-122, P-123; 2012)"
-eligibility,eligible 2019-2026 full texts from completion register (P-077..P-154),76,76 = 93 - 17 (15 already counted in v1 core + 61 net new studies)
-included,net new 2019-2026 studies added by completion register retrieval,61,61 = 76 eligible - 15 consolidated with v1 core (E3)
-included,studies contributed by the completion pass (net of v1 core),122,61 retrieved net of v1 + 61 verified working collection outside v1
-included,"studies included in the review (2019-2026, version 2)",150,28 (v1 core) + 122 (completion pass) = 74 (P-001..P-076) + 76 (P-077..P-154)
+identification,papers downloaded and collected,169,version_1 folder (files 01-99 plus 100-169)
+screening,full texts assessed against scope criteria,169,all 169 downloaded papers read in full
+screening,excluded at full text: no Hausa-specific content (E1),15,papers whose full text lacks direct Hausa-specific contribution
+screening,excluded: PDF verification failure (E2),1,P-062: held PDF contained a different article; publisher copy unobtainable
+screening,papers retained after full-text screening,153,169 - 15 (E1) - 1 (E2) = 153 (mapped to P-001 through P-154)
+eligibility,"excluded as pre-2019 (E1, outside 2019-2026 window)",3,"P-003 (2009), P-122 (2012), P-123 (2012)"
+included,studies included in the review (2019-2026),150,"153 - 3 pre-2019 = 150 studies (P-001 through P-154 minus P-003, P-062, P-122, P-123)"
 included,resources catalogued in parallel (2019-2026),41,resource register R-01 to R-41

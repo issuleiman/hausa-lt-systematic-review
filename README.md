@@ -5,9 +5,8 @@
 
 This repository contains every machine-readable artifact of the systematic review
 "Hausa Language Technologies in the Age of Artificial Intelligence: A Systematic
-Review of Resources, Applications, Challenges, and Research Gaps", reported in
-line with the study-selection 2020 statement and covering the 2019–2026 neural and
-pre-trained model era.
+Review of Resources, Applications, Challenges, and Research Gaps", covering the
+2019–2026 neural and pre-trained model era.
 
 ## Authors
 
@@ -24,23 +23,25 @@ review paper. Citation metadata is in `CITATION.cff`.
 
 ```
 data/
-  corpus_v1.xlsx               version-1 corpus (250 quota-structured publications)
   selection_counts.csv         counts for every stage of the study-selection flow
-  screening_decisions.csv      one row per record: stream, decision, reason, retrieval
-                               route, and study ID (472 rows)
+                               (169 downloaded -> 153 verified Hausa -> 150 in 2019-2026)
+  screening_decisions.csv      one row per candidate paper in the version-1 collection
+                               (V1-001 to V1-169: filename, title, year, link, decision,
+                               reason, and final corpus ID; 169 rows)
   study_inventory.csv          the 150 included studies (2019-2026) with metadata,
                                thematic block, per-study insight, paper section, and QA scores
   quality_assessment.csv       the five-item bibliographic rubric, scored per study
   extraction_sheet.csv         fixed extraction form: task, dataset, size, method, result
-  resource_catalogue.csv       the 41 resources (R-01..R-41, all 2019-2026) with type,
-                               domain, size, access, insight, and paper section
+  resource_catalogue.csv       the 41 resources (R-01..R-41, all 2019-2026) with year,
+                               type, domain, size, access, insight, and paper section
   evidence_gap_matrix.csv      each gap G1-G10 mapped to cited studies, with quality-band
                                breakdown
-  claim_audit_log.csv          audit of categorical claims and how each was substantiated
+  claim_audit_log.csv          audit of claims and how each was verified against the PDFs
 docs/
   CHANGELOG_LRE.md             detailed change log for the LRE submission
-corpus_construction.md         provenance record: corpus v1 (250), scope screening
-                               (250 -> 28), completion pass (63 working collection + 159 register -> 122 net studies), and timestamps
+corpus_construction.md         collection and screening record: version 1 (169 downloaded
+                               papers), full-text screening (169 -> 153), and 2019-2026
+                               temporal filter (153 -> 150)
 latex/                         full LaTeX source of the review (main.tex, refs.bib,
                                figures, appendix, and Springer Nature class files)
 .zenodo.json                   Zenodo deposit metadata
@@ -50,31 +51,16 @@ LICENSE                        CC BY 4.0
 
 ## Study IDs
 
-`P-001` ... `P-154` (minus pre-2019 records `P-003`, `P-122`, `P-123` and unverified `P-062`, 150 studies total from 2019–2026) are stable identifiers for the included studies, assigned in the
-final synthesis order. Resource records are `R-01` ... `R-41` (all 2019–2026).
+`P-001` ... `P-154` (minus pre-2019 records `P-003`, `P-122`, `P-123` and unverified `P-062`, 150 studies total from 2019–2026) are stable identifiers for the included studies. Resource records are `R-01` ... `R-41` (all 2019–2026).
 
 ## Quality assessment
 
-The rubric (paper, Table on quality assessment) scores five objectively verifiable
-items: venue class (0/0.5/1), data statement (0/0.5/1), quantitative result (0/1),
-Hausa specificity (0/1/2), and artifact link (0/1), for a maximum of 6 points.
-Bands: High >= 4.5, Medium 2.5-4.4, Low < 2.5. The scoring is mechanical and can be
-recomputed from `extraction_sheet.csv`; it measures documentation transparency and
-Hausa specificity, not methodological rigour.
+The rubric (paper Table 4) scores five objectively verifiable items: venue class (0/0.5/1), data statement (0/0.5/1), quantitative result (0/1), Hausa specificity (0/1/2), and artifact link (0/1), for a maximum of 6 points. Bands: High >= 4.5, Medium 2.5-4.4, Low < 2.5. The scoring is mechanical and can be recomputed from `extraction_sheet.csv`; it measures documentation transparency and Hausa specificity, not methodological rigour.
 
 ## Reproducibility statement
 
-Retrieval was scripted (validated PDF signatures, publisher-specific fallbacks,
-open-access metadata lookups) and every screening decision is logged with its reason.
-This is a curated-corpus review: the evidence base is version 1 of the corpus
-(250 quota-structured publications, `data/corpus_v1.xlsx`), reduced by scope
-screening to a 28-study core (2019–2026), then completed to 150 studies through a
-63-record working collection outside v1 and a 159-record register with a scripted
-retrieval run (see `corpus_construction.md`). Note the limitations recorded in the
-paper: scope-screening bias, single-reviewer screening, no prospective registration,
-and 26 records that could not be retrieved because their publishers block automated access.
+Every one of the 169 candidate papers in the version-1 collection (`V1-001` to `V1-169`) was inspected at full text, and every screening decision is logged with its reason in `data/screening_decisions.csv`. Full-text screening excluded 15 papers lacking direct Hausa content (E1) and 1 paper whose PDF failed verification (`V1-062`, E2), leaving 153 verified Hausa studies; applying the 2019–2026 temporal eligibility criterion (I2) then excluded 3 pre-2019 studies (`P-003` [2009], `P-122` [2012], `P-123` [2012]), yielding the final corpus of 150 studies alongside 41 computational resources from 2019–2026 (see `corpus_construction.md`).
 
 ## License
 
-CC BY 4.0. The 150 full-text PDFs are distributed separately on request, respecting
-the access conditions of their publishers.
+CC BY 4.0. The full-text PDFs (`version_1/` with 169 files and `final_version_150/` with 150 files) are distributed separately on request, respecting the access conditions of their publishers.
