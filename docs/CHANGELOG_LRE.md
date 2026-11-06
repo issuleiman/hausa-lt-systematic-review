@@ -2,7 +2,7 @@
 
 ## Format and submission requirements
 - Ported the manuscript to the Springer Nature **sn-jnl** class (`sn-basic` author-year reference style, per the journal's submission guidelines: references cited by name and year; abstract 150-250 words; structured declarations).
-- Abstract rewritten to **227 words** (within the 150-250 limit), Background-Gap-Method-Results-Synthesis-Implications structure.
+- Abstract rewritten to **219 words** (strictly within the 150-250 word limit), Background-Gap-Method-Results-Synthesis-Implications structure.
 - Six keywords added (`\keywords{...}`).
 - Declarations section added: Funding, Competing interests, Ethics (not applicable: no human/animal subjects), Data availability, Author contributions. Data availability links the public GitHub repository (`https://github.com/issuleiman/hausa-lt-systematic-review`) and permanent Zenodo archive (`https://doi.org/10.5281/zenodo.23972015`).
 - sn-jnl compatibility shim for TeX Live (footnote-hook providecommands, `artcatboxgray` colour predefinition) documented inline.

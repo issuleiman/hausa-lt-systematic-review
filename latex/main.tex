@@ -14,7 +14,7 @@
 \usepackage{booktabs,longtable,makecell}
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{positioning, arrows.meta}
+\usetikzlibrary{positioning, arrows.meta, calc}
 \input{stats_fragments}
 \input{tables_gen}
 
@@ -28,7 +28,7 @@
 
 \affil*[1]{\orgname{Woxsen University}, \orgaddress{\city{Hyderabad}, \state{Telangana}, \country{India}}}
 
-\abstract{Hausa is spoken as a first language by more than 120 million people and as a second language by roughly 80 million more, yet it remains computationally low-resource, and no existing synthesis of its language technology covers the large-language-model period. Focusing strictly on the 2019--2026 neural and pre-trained model era, a breadth-first corpus of 250 publications, assembled against explicit area targets, was reduced by scope screening to the 28 studies from 2019--2026 that contribute directly to the review's goal; a completion pass combining 63 pre-held working-collection records with a structured register of 159 candidates then contributed 122 further 2019--2026 studies after full-text retrieval and verification. The resulting corpus comprises 150 studies and a parallel catalogue of 41 resources (all from 2019--2026); every study was read in full and quality-assessed on a bibliographic rubric. The literature is organised into a nine-block taxonomy spanning foundations, corpora, machine translation and its evaluation, pre-trained models and benchmarks, text processing, speech, safety, multimodal and Ajami-script work, and retrieval and efficiency, and the resource landscape is quantified from 494{,}246 filtered parallel pairs for English--Hausa news translation and 32{,}923 Hausa image descriptions to 1{,}800 hours of Nigerian speech and a 637{,}414-token Ajami corpus. Six findings hold across tasks: the field has become data-centric; transfer from multilingual pre-trained models is the default recipe; evaluation validity is the most fragile link; tokenization imposes a measurable economic penalty; safety and cultural grounding have become core concerns; and community infrastructure determines whether artefacts survive. Ten research gaps, each tied to the evidence that motivates it, close the review with a buildable agenda; all corpus, screening, and extraction data accompany the paper in a public repository.}
+\abstract{Hausa is spoken as a first language by more than 120 million people and as a second language by roughly 80 million more, yet it remains computationally low-resource, and no synthesis covers its language technology in the large-language-model period. Focusing strictly on 2019--2026, a quota-structured corpus of 250 publications was reduced by scope screening to a 28-study core; a completion pass combining 63 working-collection records with a 159-candidate register then contributed 122 further studies after full-text verification. The resulting corpus comprises 150 studies and 41 catalogued resources (all from 2019--2026), each read in full and scored on a five-item bibliographic rubric. We organise the literature into a nine-block taxonomy spanning foundations, corpora, machine translation and evaluation, pre-trained models and benchmarks, text processing, speech, safety, multimodal and Ajami-script work, and retrieval and efficiency, quantifying resources from 494{,}246 English--Hausa parallel sentences and 32{,}923 image descriptions to 1{,}800 hours of Nigerian speech and a 637{,}414-token Ajami corpus. Six cross-cutting findings emerge: the field has become data-centric; multilingual pre-trained transfer is the default recipe; evaluation validity is fragile; tokenization imposes a measurable cost penalty; safety and cultural grounding are now core concerns; and community infrastructure governs artefact survival. Ten evidence-linked research gaps close the review with a buildable agenda, supported by an open data repository.}
 
 \keywords{Hausa \sep low-resource languages \sep language resources \sep machine translation \sep speech recognition \sep systematic review}
 
@@ -185,74 +185,90 @@ The screened core left coverage gaps that v1, by design, could not fill: recent 
 \definecolor{strokgray}{HTML}{4D4D4D}
 \resizebox{0.99\textwidth}{!}{%
 \begin{tikzpicture}[
-  x=1cm, y=1cm,
-  stg/.style={draw=darkblue, rounded corners=2.5pt, text width=2.1cm,
-              minimum height=1.25cm, inner sep=3pt, align=center,
+  stg/.style={draw=darkblue, rounded corners=3pt, minimum width=3.1cm,
+              minimum height=1.55cm, inner sep=4pt, align=center,
               font=\scriptsize\bfseries\sffamily, fill=darkblue, text=white,
               line width=0.6pt},
-  colbox/.style={draw=strokgray, rounded corners=3pt, text width=5.6cm,
-                 minimum height=1.25cm, inner sep=4pt, align=center,
-                 font=\scriptsize, fill=palegray, line width=0.55pt},
-  bluebox/.style={draw=darkblue, rounded corners=3pt, text width=5.6cm,
-                  minimum height=1.25cm, inner sep=4pt, align=center,
-                  font=\scriptsize, fill=paleblue, line width=0.65pt},
-  midbox/.style={draw=darkblue, rounded corners=3pt, text width=5.6cm,
-                 minimum height=1.25cm, inner sep=4pt, align=center,
-                 font=\scriptsize, fill=ltblue!55, line width=0.7pt},
-  retbox/.style={draw=darkblue, rounded corners=3pt, text width=5.6cm,
-                 minimum height=1.25cm, inner sep=4pt, align=center,
-                 font=\scriptsize, fill=medblue, text=white, line width=0.7pt},
-  finbox/.style={draw=darkblue, rounded corners=3.5pt, text width=12.1cm,
-                 minimum height=1.45cm, inner sep=5pt, align=center,
-                 font=\footnotesize, fill=darkblue, text=white, line width=0.9pt},
-  arr/.style={-{Stealth[length=4.5pt, width=3.5pt]}, line width=0.65pt, strokgray},
+  colbox/.style={draw=strokgray, rounded corners=3.5pt, minimum width=10.35cm,
+                 minimum height=1.55cm, inner sep=5pt, align=center,
+                 font=\scriptsize, fill=palegray, line width=0.6pt},
+  bluebox/.style={draw=darkblue, rounded corners=3.5pt, minimum width=10.35cm,
+                  minimum height=1.55cm, inner sep=5pt, align=center,
+                  font=\scriptsize, fill=paleblue, line width=0.7pt},
+  midbox/.style={draw=darkblue, rounded corners=3.5pt, minimum width=10.35cm,
+                 minimum height=1.55cm, inner sep=5pt, align=center,
+                 font=\scriptsize, fill=ltblue!55, line width=0.75pt},
+  retbox/.style={draw=darkblue, rounded corners=3.5pt, minimum width=10.35cm,
+                 minimum height=1.55cm, inner sep=5pt, align=center,
+                 font=\scriptsize, fill=medblue, text=white, line width=0.75pt},
+  finbox/.style={draw=darkblue, rounded corners=4pt, minimum width=21.35cm,
+                 minimum height=1.65cm, inner sep=5pt, align=center,
+                 font=\scriptsize, fill=darkblue, text=white, line width=0.9pt},
+  arr/.style={-{Stealth[length=5pt, width=4pt]}, line width=0.75pt, strokgray},
 ]
 %
-% ===== LEFT COLUMN: HORIZONTAL STAGE BADGES (x = 0.0, width ~2.3cm -> spans -1.15..+1.15) =====
+% ===== STREAM 1 (LEFT MAIN STREAM: V1 CORPUS + WORKING COLLECTION) =====
 %
-\node[stg] (s1) at (0.0,  0.00) {IDENTIFICATION};
-\node[stg] (s2) at (0.0, -1.85) {SCREENING};
-\node[stg] (s3) at (0.0, -3.70) {RETRIEVAL};
-\node[stg] (s4) at (0.0, -5.55) {ELIGIBILITY};
-\node[stg, minimum height=1.45cm] (s5) at (0.0, -7.55) {INCLUDED};
+\node[bluebox] (v1) at (0,0)
+  {\textbf{Version-1 corpus (v1)}\\[2pt]
+   250 publications (2011--2026)\\[1pt]
+   Quota-structured across 8 thematic areas};
 
-%
-% ===== STREAM 1 (CENTER-LEFT, x = 4.65, width ~5.9cm -> spans 1.70..7.60; 0.55cm gap from badges) =====
-%
-\node[bluebox] (v1) at (4.65, 0.00)
-  {\textbf{Version-1 corpus (v1)}\\250 publications (2011--2026)\\Quota-structured across 8 thematic areas};
+\node[colbox, below=0.52cm of v1] (v1scr)
+  {\textbf{Assessed against 2019--2026 scope criteria (\textit{n}\,=\,250)}\\[2pt]
+   Set aside at screening: \textbf{222 records}\\[1pt]
+   203 out of scope (E1) + 17 superseded/pre-2019 (E1/I2) + 2 overlap (E3)};
 
-\node[colbox] (v1scr) at (4.65, -1.85)
-  {\textbf{Assessed against 2019--2026 scope criteria (\textit{n}\,=\,250)}\\Set aside: 222 records (203 outside scope E1\,+\\17 superseded/pre-2019 E1/I2\,+\,2 overlap E3)};
+\node[midbox, below=0.52cm of v1scr] (v1core)
+  {\textbf{Direct-contribution core retained (2019--2026)}\\[2pt]
+   {\footnotesize\textbf{\textit{n}\,=\,28 studies}}\\[1pt]
+   \texttt{V1-001}--\texttt{V1-250} (13 in \texttt{P-001}--\texttt{P-076}, 15 in \texttt{P-077}--\texttt{P-154})};
 
-\node[midbox] (v1core) at (4.65, -3.70)
-  {\textbf{Direct-contribution core retained (2019--2026)}\\{\footnotesize\textbf{\textit{n}\,=\,28 studies}}\\Logged in \texttt{V1-001}--\texttt{V1-250}};
-
-\node[bluebox] (wc) at (4.65, -5.55)
-  {\textbf{Working collection held outside v1 (\textit{n}\,=\,63)}\\Verified 2019--2026 studies retained: \textbf{61 studies}\\Excluded: 1 pre-2019 (E1, \texttt{P-003})\,+\,1 failed PDF (E2, \texttt{P-062})};
-
-%
-% ===== STREAM 2 (RIGHT, x = 11.15, width ~5.9cm -> spans 8.20..14.10; 0.60cm gap from Stream 1) =====
-%
-\node[bluebox] (reg) at (11.15, 0.00)
-  {\textbf{Completion register compiled}\\159 candidate records (\texttt{REG-001}--\texttt{REG-160})\\Systematic venue \& community monitoring};
-
-\node[colbox] (dedup) at (11.15, -1.85)
-  {\textbf{Deduplicated against working collection}\\Already held in working collection: 40 (E3)\\Candidates sought for retrieval: \textbf{\textit{n}\,=\,119}};
-
-\node[retbox] (ret) at (11.15, -3.70)
-  {\textbf{Scripted full-text retrieval run (5 Oct 2026)}\\Full texts retrieved: \textbf{\textit{n}\,=\,93}\\Not retrieved (publisher blocks, E2): 26};
-
-\node[midbox] (elig) at (11.15, -5.55)
-  {\textbf{Full-text eligibility assessment (\textit{n}\,=\,93, 2019--2026)}\\Excluded (E1: 15 out of scope\,+\,2 pre-2019): 17\,\textbar\,Eligible: 76\\Consolidated with v1 core (E3): 15\,\textbar\,\textbf{Net new added: 61}};
+\node[bluebox, below=0.52cm of v1core] (wc)
+  {\textbf{Working collection held outside v1 (\textit{n}\,=\,63)}\\[2pt]
+   Verified 2019--2026 studies retained: \textbf{\textit{n}\,=\,61 studies}\\[1pt]
+   Excluded: 1 pre-2019 (E1, \texttt{P-003}) + 1 failed PDF check (E2, \texttt{P-062})};
 
 %
-% ===== BOTTOM SPANNING BOX (x = 7.90, width ~12.4cm -> spans 1.70..14.10) =====
+% ===== STREAM 2 (RIGHT MAIN STREAM: COMPLETION REGISTER) =====
 %
-\node[finbox] (final) at (7.90, -7.55)
-  {\textbf{Final review corpus (2019--2026, version 2): 150 included studies (\texttt{P-001}--\texttt{P-154} minus \texttt{P-003}, \texttt{P-062}, \texttt{P-122}, \texttt{P-123})}\\[1pt]
+\node[bluebox, right=0.65cm of v1] (reg)
+  {\textbf{Completion register compiled}\\[2pt]
+   159 candidate records (\texttt{REG-001}--\texttt{REG-160})\\[1pt]
+   Systematic venue and community monitoring};
+
+\node[colbox, below=0.52cm of reg] (dedup)
+  {\textbf{Deduplicated against working collection}\\[2pt]
+   Already held in working collection: \textbf{40 records (E3)}\\[1pt]
+   Candidates sought for retrieval: \textbf{\textit{n}\,=\,119}};
+
+\node[retbox, below=0.52cm of dedup] (ret)
+  {\textbf{Scripted full-text retrieval run (5 Oct 2026)}\\[2pt]
+   Verified full texts retrieved: \textbf{\textit{n}\,=\,93}\\[1pt]
+   Not retrieved due to publisher blocks (E2): \textbf{26}};
+
+\node[midbox, below=0.52cm of ret] (elig)
+  {\textbf{Full-text eligibility assessment (\textit{n}\,=\,93, 2019--2026)}\\[2pt]
+   Excluded (E1: 15 out of scope + 2 pre-2019): \textbf{17} $\;\cdot\;$ Eligible: \textbf{76}\\[1pt]
+   Consolidated with v1 core (E3): \textbf{15} $\;\cdot\;$ \textbf{Net new added: 61}};
+
+%
+% ===== BOTTOM SPANNING BOX (FINAL 2019-2026 CORPUS) =====
+%
+\node[finbox, below=0.55cm of wc.south west, anchor=north west] (final)
+  {\textbf{Final review corpus (2019--2026, version 2): 150 included studies (\texttt{P-001}--\texttt{P-154} minus \texttt{P-003}, \texttt{P-062}, \texttt{P-122}, \texttt{P-123})}\\[2pt]
    \textbf{28} (v1 core) + \textbf{61} (working collection outside v1) + \textbf{61} (completion retrieval net of v1) = \textbf{150 studies}\\[1pt]
-   {\scriptsize\textbf{41 computational resources (2019--2026)} catalogued in parallel (\texttt{R-01}--\texttt{R-41})}};
+   \textbf{41 computational resources (2019--2026)} catalogued in parallel (\texttt{R-01}--\texttt{R-41})};
+
+%
+% ===== LEFT COLUMN: HORIZONTAL STAGE BADGES (ALIGNED TO LEFT EDGE) =====
+%
+\coordinate[left=0.45cm of v1.west] (stgline);
+\node[stg, anchor=east] (s1) at (stgline |- v1.center)     {IDENTIFICATION};
+\node[stg, anchor=east] (s2) at (stgline |- v1scr.center)  {SCREENING};
+\node[stg, anchor=east] (s3) at (stgline |- v1core.center) {RETRIEVAL};
+\node[stg, anchor=east] (s4) at (stgline |- wc.center)     {ELIGIBILITY};
+\node[stg, minimum height=1.65cm, anchor=east] (s5) at (stgline |- final.center) {INCLUDED};
 
 %
 % ===== VERTICAL ARROWS =====
@@ -295,7 +311,7 @@ QA5 & Resolvable artifact link present & 1 / 0 \\
 \end{tabular}
 \end{table}
 
-Of the 150 studies, \QAhigh{} fall in the High band, \QAmed{} in the Medium band, and one in the Low band. The distribution is uneven across blocks: corpora and benchmarks concentrate the High band, while 43 of the 150 studies (28.7\%) are preprints (QA1 = 0.5), and all 41 catalogued resources report a size or coverage statement. We retain all 150 studies in the synthesis regardless of band, and we cite the single Low-band study—a cross-African speech-recognition benchmarking report whose text does not evaluate Hausa directly \citep{p044}—only for its data-scaling and decoding protocol guidance rather than for Hausa-specific results. The full per-study scoring is in the repository; Section~\ref{sec:threats} discusses what this rubric does and does not capture.
+Of the 150 studies, \QAhigh{} fall in the High band, \QAmed{} in the Medium band, and one in the Low band. The distribution is uneven across blocks: corpora and benchmarks concentrate the High band, while 43 of the 150 studies (28.7\%) are preprints (QA1 = 0.5), and all 41 catalogued resources report a size or coverage statement. We retain all 150 studies in the synthesis regardless of band, and we cite the single Low-band study---a cross-African speech-recognition benchmarking report whose text does not evaluate Hausa directly \citep{p044}---only for its data-scaling and decoding protocol guidance rather than for Hausa-specific results. The full per-study scoring is in the repository; Section~\ref{sec:threats} discusses what this rubric does and does not capture.
 
 \subsection{Taxonomy derivation}\label{sec:taxmethod}
 The nine thematic blocks were derived in two passes. In the first pass, the structured register had grouped records into thirteen provisional categories (surveys; community initiatives; corpora; machine translation; MT evaluation; pretrained models; LLMs and generation; benchmarks; sequence labelling; speech; sentiment and safety; multimodal and script; tokenization and efficiency). In the second pass we consolidated these by task affinity into nine blocks, merging categories that share infrastructure (for example, MT and MT evaluation), separating communities and policy from surveys, and assigning every multi-task study exactly one primary block by its dominant contribution. The grouping was iterated until each of the 150 studies sat in exactly one block and every block contained at least eight studies; the mapping from every study to its block is in \texttt{study\_inventory.csv}. We acknowledge the residual subjectivity of any such grouping in Section~\ref{sec:threats}, and the taxonomy should be read as an organising device for the synthesis, not as a claim about the field's structure.
@@ -306,7 +322,7 @@ We organise the 150 studies into nine thematic blocks (Table~\ref{tab:blocks}), 
 \begin{table}[t]\centering\small
 \caption{Thematic blocks of the reviewed literature (studies per block).}
 \label{tab:blocks}
-\begin{tabular}{@{}clc@{}}
+\begin{tabular}{@{}cp{0.76\textwidth}r@{}}
 \toprule
 \textbf{\#} & \textbf{Block} & \textbf{Studies} \\
 \midrule
@@ -382,7 +398,7 @@ Participatory machine translation research \citep{p079}, the Masakhane Web platf
 \begin{enumerate}\itemsep2pt
   \item \textbf{Data scarcity with domain skew.} Speech data remains at hours-not-thousands scale and read-speech dominated (Section~\ref{sec:resources}); text is heavy on news and social media and thin on health, legal, and education material; document-level data amounts to 605 AFRIDOC-MT documents across five languages \citep{p030}.
   \item \textbf{Orthography, diacritics, and code-switching.} Writing anomalies are common enough to support an over-400{,}000-pair correction corpus \citep{p067,p146}; stems and lemmata remain non-trivial \citep{p119,p143,p066,p120}; and English--Hausa code-switching is the norm in real comment streams \citep{p073,p135,p142}.
-  \item \textbf{Suprasegmentals and morphological complexity.} Tone, vowel length, and rich inflectional/derivational morphology are lexically contrastive and resist segment-only pipelines \citep{p023,p066}; almost no production system models them directly.
+  \item \textbf{Suprasegmentals and morphological complexity.} Lexical and grammatical tone (two tones, unmarked in standard Boko orthography), vowel length, and rich inflectional and derivational morphology resist segment-only pipelines \citep{p006,p066,p077}; almost no production system models them directly.
   \item \textbf{The Ajami divide.} Two scripts, one language: Ajami corpora are roughly three orders of magnitude smaller than Boko's, and even Ajami hate speech detection and script recognition require bespoke cross-script and OCR architectures \citep{p002,p023,p145}.
   \item \textbf{Evaluation validity.} Metric instability \citep{p028,p033,p092,p029,p031} and prompt sensitivity \citep{p017,p018} make cross-paper comparison hazardous.
   \item \textbf{Economic access.} Tokenizer penalties \citep{p019,p152} and API costs make state-of-the-art-by-API fragile for Hausa deployers; fallback engineering is already published practice \citep{p020}.
@@ -395,7 +411,7 @@ Participatory machine translation research \citep{p079}, the Masakhane Web platf
   \item \textbf{G2: Modern open Hausa speech recognition.} Pair NaijaVoices- and WAXAL-scale Hausa speech \citep{p127,p046} with self-supervised and edge fine-tuning \citep{p125,p128} and the published benchmarking protocols \citep{p044}; a conversational-Hausa target of 15\% word error rate or better is within reach of current methods.
   \item \textbf{G3: Document-level and domain machine translation.} Scale AFRIDOC-MT-style Hausa health, IT, and education documents \citep{p030}, and evaluate with SSA-MTE-grade metrics \citep{p031}.
   \item \textbf{G4: African-grounded evaluation for LLM-era Hausa.} Develop human-anchored, Hausa-specific metric suites, and report metric audits alongside every system \citep{p033,p092}.
-  \item \textbf{G5: Morphology- and tone-aware modeling.} Tokenizers and objectives that respect Hausa morphology, lemmatization, tone, and vowel length \citep{p066}, tested against the token tax \citep{p019,p152}.
+  \item \textbf{G5: Morphology- and tone-aware modeling.} Tokenizers and objectives that respect Hausa morphology, lemmatization, lexical tone, and vowel length \citep{p006,p066,p077}, tested against the token tax \citep{p019,p152}.
   \item \textbf{G6: Culturally grounded safety and knowledge.} Grow the native safety corpora \citep{p058,p059,p135,p136,p137,p138,p139,p140,p141,p142,p146} and cultural benchmarks \citep{p020,p144,p148} beyond their current few-thousand-item scale, with dialectal coverage (Kano, Katsina, Sokoto, Zaria).
   \item \textbf{G7: Structured knowledge.} Connect the Hausa WordNet \citep{p086}, abstract WordNets \citep{p022}, word-sense-disambiguation data \citep{p085}, and AfriSUD \citep{p121} into an evaluation-ready semantic layer.
   \item \textbf{G8: A retrieval ecosystem.} Grow CIRAL \citep{p008} into a Hausa retrieval suite spanning dense, sparse, and LLM modes \citep{p009,p010,p011}, with African-anchored relevance judgments.
@@ -423,10 +439,10 @@ Table~\ref{tab:gapmatrix} maps each gap to the studies cited in its discussion, 
 \end{figure}
 
 \section{Threats to Validity}\label{sec:threats}
-\textbf{Scope-screening bias.} The reduction of the initial corpus from 250 publications to a 28-study core (2019--2026) rested on one reviewer's scope judgments; the per-record log and the per-area discard counts make those judgments inspectable, but no second-reviewer check can be reported. The completion pass inherits the same risk in mirror image: studies that neither corpus version captured are absent from this review regardless of their importance, and any future update should add an independent database search to test the corpus for gaps. \textbf{Publication and preprint bias.} With 43 of 150 studies (28.7\%) available only as preprints, our synthesis weights unreviewed work more heavily than a mature field would; the quality-assessment rubric (Section~\ref{sec:qa}) marks such studies, but we cannot exclude that some preprint results will not survive review. \textbf{Selection and retrieval bias.} Studies behind publisher or verification barriers, 27 candidate records across the collection (26 publisher-blocked in the register plus one unobtainable after PDF verification), could not be obtained; to the extent that they concentrate industry and Global-South-venue work, our synthesis inherits that bias. We chose to exclude rather than partially synthesise these records, which keeps the evidence base verifiable but shrinks it. \textbf{Single-reviewer risk.} Screening and extraction were performed by one reviewer with scripted support; although every decision is logged with its reason, no second-reviewer agreement statistic can be reported, and borderline inclusion decisions may reflect one reader's judgment. \textbf{Temporal bias.} By design, the review covers 2019--2026 and concentrates on 2025--2026 (54.7\% of included studies) and peer-reviewed ACL-family venues (49.3\%), so the synthesis describes the modern neural and foundation-model era rather than pre-neural linguistic engineering. \textbf{Construct and taxonomy subjectivity.} Requiring Hausa-specific content in full text guarantees relevance but may have set aside pan-African studies whose Hausa coverage is confined to figures; and the nine-block taxonomy, however documented, embeds grouping judgments that other reviewers might draw differently. \textbf{Quality rubric limits.} The rubric scores transparency (venue, data statement, artifact link) and Hausa specificity, not methodological rigour or result reliability; a High band does not mean a trustworthy result, only a well-documented one. \textbf{Internal validity.} Results quoted here are as reported by the primary studies; we did not re-run systems. The companion repository makes every inclusion decision, extraction, and quality score inspectable so that readers may audit these judgments. The review was not prospectively registered (PROSPERO, for instance, does not accept computer-science reviews); the procedures reported in Section~\ref{sec:method} were fixed before analysis and are reconstructed here from the logged artifacts of the review process.
+\textbf{Scope-screening bias.} The reduction of the initial corpus from 250 publications to a 28-study core (2019--2026) rested on one reviewer's scope judgments; the per-record log and the per-area discard counts make those judgments inspectable, but no second-reviewer check can be reported. The completion pass inherits the same risk in mirror image: studies that neither corpus version captured are absent from this review regardless of their importance, and any future update should add an independent database search to test the corpus for gaps. \textbf{Publication and preprint bias.} With 43 of 150 studies (28.7\%) available only as preprints, our synthesis weights unreviewed work more heavily than a mature field would; the quality-assessment rubric (Section~\ref{sec:qa}) marks such studies, but we cannot exclude that some preprint results will not survive review. \textbf{Selection and retrieval bias.} Studies behind publisher or verification barriers, 27 candidate records across the collection (26 publisher-blocked in the register plus one unobtainable after PDF verification), could not be obtained; to the extent that they concentrate industry and Global-South-venue work, our synthesis inherits that bias. We chose to exclude rather than partially synthesise these records, which keeps the evidence base verifiable but shrinks it. \textbf{Single-reviewer risk.} Screening and extraction were performed by one reviewer with scripted support; although every decision is logged with its reason, no second-reviewer agreement statistic can be reported, and borderline inclusion decisions may reflect one reader's judgment. \textbf{Temporal bias.} By design, the review covers 2019--2026 and concentrates on 2025--2026 (54.7\% of included studies) and peer-reviewed venues and workshops (49.3\%, largely ACL-family), so the synthesis describes the modern neural and foundation-model era rather than pre-neural linguistic engineering. \textbf{Construct and taxonomy subjectivity.} Requiring Hausa-specific content in full text guarantees relevance but may have set aside pan-African studies whose Hausa coverage is confined to figures; and the nine-block taxonomy, however documented, embeds grouping judgments that other reviewers might draw differently. \textbf{Quality rubric limits.} The rubric scores transparency (venue, data statement, artifact link) and Hausa specificity, not methodological rigour or result reliability; a High band does not mean a trustworthy result, only a well-documented one. \textbf{Internal validity.} Results quoted here are as reported by the primary studies; we did not re-run systems. The companion repository makes every inclusion decision, extraction, and quality score inspectable so that readers may audit these judgments. The review was not prospectively registered (PROSPERO, for instance, does not accept computer-science reviews); the procedures reported in Section~\ref{sec:method} were fixed before analysis and are reconstructed here from the logged artifacts of the review process.
 
 \section{Conclusion}\label{sec:conclusion}
-Hausa language technology has entered the LLM era with real assets (two script traditions, a functioning benchmark layer, an African MT-evaluation stack, and, to the best of our knowledge, one of the densest concentrations of safety literature among West African languages) and with equally real deficits: speech data an order of magnitude short, Ajami nearly absent, evaluation validity fragile, and over a quarter of the pursued register behind publisher walls. The ten-gap agenda set out above is deliberately buildable, because every gap has a working template elsewhere in this corpus. What the field needs now is not another architecture. It needs the data, the metrics, and the community infrastructure that would make Hausa a first-class citizen of artificial intelligence, and in the process, a testbed for how AI can serve the world's other low-resource languages.
+Hausa language technology has entered the LLM era with real assets (two script traditions, a functioning benchmark layer, an African MT-evaluation stack, and, to the best of our knowledge, one of the densest concentrations of safety literature among West African languages) and with equally real deficits: speech data an order of magnitude short, Ajami nearly absent, evaluation validity fragile, and over a fifth of the pursued register behind publisher walls. The ten-gap agenda set out above is deliberately buildable, because every gap has a working template elsewhere in this corpus. What the field needs now is not another architecture. It needs the data, the metrics, and the community infrastructure that would make Hausa a first-class citizen of artificial intelligence, and in the process, a testbed for how AI can serve the world's other low-resource languages.
 
 \section*{Declarations}\label{sec:data}
 
@@ -444,11 +460,10 @@ Hausa language technology has entered the LLM era with real assets (two script t
 
 \appendix
 \section{Corpus Inventory}\label{app:inventory}
-Table~\ref{tab:inventory} lists every source retained in the final corpus, with its corpus identifier, title, publication year, and the thematic block under which it is synthesised. Entries marked with $^{\circ}$ could not have their author metadata confirmed from the source PDF; they are cited in the bibliography by title and year, and their canonical links are in the repository inventory.
 \input{appendix_inventory}
 
 \section{Reporting Checklist (Condensed)}\label{app:checklist}
-\begin{table}[h]\centering\small
+\begin{table}[!htb]\centering\small
 \caption{Reporting items and where they are reported. Items 5 and 6 are adapted to a curated-corpus review: identification operated on a curated seed collection and a structured register, not on de novo database searches, and this is disclosed in \S Corpus construction (version 1) and under threats to validity.}
 \begin{tabular}{@{}p{0.05\textwidth}p{0.55\textwidth}p{0.30\textwidth}@{}}
 \toprule

@@ -1,42 +1,42 @@
-resource_id,name,type,domain,size_coverage,access,insight_taken,used_in_sections,link
-R-01,HausaNLP Catalogue,Catalogue,Field-wide,Catalogue,Open,Community catalogue of Hausa datasets/models/publications - the field's discovery infrastructure (G10).,"5, 9",https://catalog.hausanlp.org/
-R-02,MasakhaNER Hausa,NER dataset,News,Version-specific,Open,Hausa NER annotations - canonical NER asset behind MasakhaNER results.,"5.1, 6.2",https://github.com/masakhane-io/masakhane-ner
-R-03,MasakhaPOS Hausa,POS dataset,News,"1,504 sentences",Open,"1,504 Hausa POS sentences - sequence-labelling infrastructure.","5.1, 6.2",https://github.com/masakhane-io/masakhane-pos
-R-04,MasakhaNEWS Hausa,Topic dataset,News,Hausa subset,Open,Hausa news topic labels - task infrastructure.,5.1,https://github.com/masakhane-io/masakhane-news
-R-05,HausaHate,Hate speech dataset,Social media,"2,000 comments",Open,"2,000 expert-annotated hate-speech comments - safety data core (F5).","5.1, 6.3",https://aclanthology.org/2024.woah-1.5.pdf
-R-06,AfriSenti Hausa,Sentiment dataset,Social media,Hausa subset,Open,Hausa tweet sentiment annotations (SemEval-grade).,6.3,https://github.com/afrisenti-semeval/afrisent-semeval-2023
-R-07,NaijaSenti Hausa,Sentiment dataset,Social media,See repository,Open,Hausa social-media sentiment data - Nigerian coverage.,6.3,https://github.com/hausanlp
-R-08,AfriQA Hausa,QA dataset,Wikipedia,"1,171 instances",Open,"1,171 Hausa retrieval-QA instances - QA infrastructure.",6.6,https://huggingface.co/datasets/masakhane/afriqa
-R-09,SemRel Hausa,Semantic relatedness,Mixed,"2,551 Hausa sentence pairs (1,736 train / 212 dev / 603 test)",Open,"SemRel Hausa: 2,551 sentence pairs with continuous semantic relatedness scores (5.1, 6.2).",5.1,https://huggingface.co/datasets/SemRel/SemRel2024
-R-10,Hausa news summarization set,Summarization dataset,News,113 articles; 226 summaries,Open,113 news articles with 226 human reference summaries - summarisation benchmark.,6.2,https://doi.org/10.1371/journal.pone.0285376
-R-11,XL-Sum Hausa,Summarization dataset,News,Hausa subset,Open,Hausa BBC news summaries - large-scale summarisation data.,5.1,https://github.com/csebuetnlp/xl-sum
-R-12,HausaMT,MT resource,Mixed,See paper,Open,English-Hausa NMT corpus and baselines - the MT starting point.,6.1,https://arxiv.org/abs/2006.05014
-R-13,MAFAND-MT Hausa-English,MT corpus,News,"5,898 pairs",Open,"5,898 Hausa-English news pairs - few-shot MT evidence.","5.1, 6.1",https://github.com/masakhane-io/masakhane-mt
-R-14,AFRIDOC-MT Hausa,Document MT corpus,Health/IT,Hausa subset,Open,Document-level Hausa translations (health/IT) - G3 evidence.,"6.1, 9",https://arxiv.org/abs/2501.06374
-R-15,HaVG,Multimodal dataset,Images,"32,923",Open,"32,923 Hausa-English image descriptions - largest vision-language resource.",5.3,https://ufal.mff.cuni.cz/hausa-visual-genome
-R-16,HaVQA,VQA dataset,Images,"6,022 QA; 1,555 images",Open,"6,022 VQA pairs over 1,555 images - multimodal QA resource.",5.3,https://github.com/shantipriyap/HausaVQA/
-R-17,Hausa 47-hour speech dataset,Speech corpus,Speech,47 hours,Open,47 h read speech - supervised ASR/TTS core.,5.2,https://doi.org/10.1016/j.dib.2022.107820
-R-18,Mozilla Common Voice Hausa,Speech corpus,Read speech,Release dependent,Open,Crowdsourced Hausa recordings (release-dependent) - community speech source.,5.2,https://commonvoice.mozilla.org/en/datasets
-R-19,BibleTTS Hausa,Speech/TTS corpus,Religious,Up to ~80 hours,Open,Up to ~80 h high-fidelity religious speech - TTS resource.,5.2,http://www.openslr.org/129/
-R-20,FLEURS Hausa,Speech benchmark,Read speech,Release dependent,Open,Hausa speech evaluation subset - benchmark layer.,5.2,https://huggingface.co/datasets/google/fleurs
-R-21,TWB Voice 1.0 Hausa,Speech corpus,Speech,"~58h; 36,665 recordings",Open,"~58 h / 36,665 recordings - humanitarian-domain speech data.",5.2,https://mozilladatacollective.com/datasets/cmp74k47s02u2mp07zr9zwhpt
-R-22,Ajami_Hausa_OCR,OCR dataset,Ajami,See dataset card,Open,Ajami OCR images/transcriptions - script-revival data (G1).,"5.3, 9",https://huggingface.co/datasets/Sobanane/Ajami_Hausa_OCR
-R-23,Hausa-OCR-AJAMI-v11,OCR model,Ajami,See model card,Open,Ajami OCR model checkpoint - deployable script technology.,5.3,https://huggingface.co/IntelligenceResearchLab/Hausa-OCR-AJAMI-v11
-R-24,CIRAL Hausa,CLIR benchmark,News/blogs,See paper,Open,Hausa CLIR test collection - retrieval evaluation core (G8).,"6.8, 9",https://github.com/castorini/CIRAL
-R-25,Belebele Hausa,Reading-comprehension benchmark,Multi-domain,Hausa variant,Open,Hausa MRC questions/passages - NLU benchmark layer.,6.6,https://huggingface.co/datasets/facebook/belebele
-R-26,AfriXNLI Hausa,NLI benchmark,Multi-domain,Hausa subset,Open,Hausa NLI subset - reasoning evaluation.,6.6,https://github.com/masakhane-io/irokobench
-R-27,AfriMGSM Hausa,Math reasoning benchmark,Math,Hausa subset,Open,Hausa math questions - reasoning frontier.,6.6,https://github.com/masakhane-io/irokobench
-R-28,AfriMMLU Hausa,Knowledge QA benchmark,Multi-domain,Hausa subset,Open,Hausa MCQ knowledge evaluation - knowledge benchmark.,6.6,https://github.com/masakhane-io/irokobench
-R-29,AfriMTEB Hausa,Embedding benchmark,Multi-domain,Hausa suite,Open,Hausa-inclusive embedding tasks - retrieval-adjacent evaluation.,6.6,https://github.com/masakhane-io/afri-mteb
-R-30,hauWE vectors,Embedding model,General text,See paper,Open,Static Hausa vectors - baseline embeddings.,5.1,https://arxiv.org/abs/1911.10708
-R-31,AfroXLMR,Model,General NLP,Model card,Open,African multilingual encoder used across Hausa systems - F2 backbone.,"6.2, 7",https://huggingface.co/Davlan/afro-xlmr-base
-R-32,InkubaLM,LLM,General NLP,0.4B model,Open,0.4B African LM with Hausa evaluations - small-model line.,6.6,https://huggingface.co/lelapa/InkubaLM-0.4B
-R-33,AfriCOMET,MT metric,MT,See paper,Open,African MT metric - metric validity (F3).,"6.1, 7",https://aclanthology.org/2024.naacl-long.334.pdf
-R-34,Hausa Speech Corpus,Speech corpus,Speech,See dataset record,Open,Baseline Hausa ASR recordings - speech data record.,5.2,https://data.mendeley.com/datasets/j6kjmfrbby
-R-35,NaijaVoices,Speech corpus,Speech,"1,800 hours; 5,000+ speakers; Hausa/Igbo/Yoruba",Open,"1,800 h / 5,000+ speakers incl. Hausa - the G2 scale target.","5.2, 9",https://huggingface.co/datasets/naijavoices/naijavoices-dataset
-R-36,Hausa-TTS-Dataset,TTS corpus,TTS,19 folders; clip duration 1–23 seconds,Open,Hausa TTS clips (1-23 s) - synthesis data.,5.2,https://mozilladatacollective.com/datasets/cmnopto3q00t0mf07v2dtc0ej
-R-37,CLEAR Global Hausa synthetic voice resources,Resource collection,ASR / TTS,See collection page,Open,Hausa TTS/ASR models + synthetic voice data - synthetic pipeline (F1).,"5.2, 7",https://clearglobal.org/resources/hausa-synthetic-voice-dataset-tts-models-asr-models/
-R-38,WAXAL,Speech corpus,ASR / TTS,See paper/dataset,Open,Multilingual speech corpus with Hausa ASR/TTS components.,5.2,https://arxiv.org/abs/2602.02734
-R-39,AfriCOMET-QE,MT quality-estimation metric,Machine translation,See paper,Open,Reference-free African MT quality estimation - QE infrastructure.,6.1,https://aclanthology.org/2024.wmt-1.36.pdf
-R-40,SSA-MTE African Challenge Set,MT challenge set,Machine translation,See paper,Open,African MT metric challenge set incl. Hausa-relevant data.,6.1,https://aclanthology.org/2025.wmt-1.65.pdf
-R-41,OpenBibleTTS,TTS dataset/model resource,TTS,See paper,Open preprint,Expanded African TTS resources incl. Hausa - TTS scale-up.,5.2,https://arxiv.org/html/2606.09553v1
+resource_id,name,year,year_basis,type,domain,size_coverage,access,insight_taken,used_in_sections,link
+R-01,HausaNLP Catalogue,2025,"introduced with HausaNLP survey (P-005, 2025)",Catalogue,Field-wide,Catalogue,Open,Community catalogue of Hausa datasets/models/publications - the field's discovery infrastructure (G10).,"5, 9",https://catalog.hausanlp.org/
+R-02,MasakhaNER Hausa,2021,"MasakhaNER (P-051, TACL 2021)",NER dataset,News,Version-specific,Open,Hausa NER annotations - canonical NER asset behind MasakhaNER results.,"5.1, 6.2",https://github.com/masakhane-io/masakhane-ner
+R-03,MasakhaPOS Hausa,2023,"MasakhaPOS (P-055, ACL 2023)",POS dataset,News,"1,504 sentences",Open,"1,504 Hausa POS sentences - sequence-labelling infrastructure.","5.1, 6.2",https://github.com/masakhane-io/masakhane-pos
+R-04,MasakhaNEWS Hausa,2023,"MasakhaNEWS (P-109, 2023)",Topic dataset,News,Hausa subset,Open,Hausa news topic labels - task infrastructure.,5.1,https://github.com/masakhane-io/masakhane-news
+R-05,HausaHate,2024,"HausaHate (P-059, WOAH 2024)",Hate speech dataset,Social media,"2,000 comments",Open,"2,000 expert-annotated hate-speech comments - safety data core (F5).","5.1, 6.3",https://aclanthology.org/2024.woah-1.5.pdf
+R-06,AfriSenti Hausa,2023,"AfriSenti (P-111, 2023)",Sentiment dataset,Social media,Hausa subset,Open,Hausa tweet sentiment annotations (SemEval-grade).,6.3,https://github.com/afrisenti-semeval/afrisent-semeval-2023
+R-07,NaijaSenti Hausa,2022,"NaijaSenti (P-110, LREC 2022)",Sentiment dataset,Social media,See repository,Open,Hausa social-media sentiment data - Nigerian coverage.,6.3,https://github.com/hausanlp
+R-08,AfriQA Hausa,2023,"AfriQA (P-113, 2023)",QA dataset,Wikipedia,"1,171 instances",Open,"1,171 Hausa retrieval-QA instances - QA infrastructure.",6.6,https://huggingface.co/datasets/masakhane/afriqa
+R-09,SemRel Hausa,2024,"SemRel2024 (P-061, 2024)",Semantic relatedness,Mixed,"2,551 Hausa sentence pairs (1,736 train / 212 dev / 603 test)",Open,"SemRel Hausa: 2,551 sentence pairs with continuous semantic relatedness scores (5.1, 6.2).",5.1,https://huggingface.co/datasets/SemRel/SemRel2024
+R-10,Hausa news summarization set,2023,"PLOS ONE 10.1371/journal.pone.0285376 (P-057, 2023)",Summarization dataset,News,113 articles; 226 summaries,Open,113 news articles with 226 human reference summaries - summarisation benchmark.,6.2,https://doi.org/10.1371/journal.pone.0285376
+R-11,XL-Sum Hausa,2021,"XL-Sum, Findings of ACL 2021",Summarization dataset,News,Hausa subset,Open,Hausa BBC news summaries - large-scale summarisation data.,5.1,https://github.com/csebuetnlp/xl-sum
+R-12,HausaMT,2020,"HausaMT v1.0 (P-025, 2020)",MT resource,Mixed,See paper,Open,English-Hausa NMT corpus and baselines - the MT starting point.,6.1,https://arxiv.org/abs/2006.05014
+R-13,MAFAND-MT Hausa-English,2022,"MAFAND-MT (P-027, NAACL 2022)",MT corpus,News,"5,898 pairs",Open,"5,898 Hausa-English news pairs - few-shot MT evidence.","5.1, 6.1",https://github.com/masakhane-io/masakhane-mt
+R-14,AFRIDOC-MT Hausa,2025,"AFRIDOC-MT (P-030, 2025)",Document MT corpus,Health/IT,Hausa subset,Open,Document-level Hausa translations (health/IT) - G3 evidence.,"6.1, 9",https://arxiv.org/abs/2501.06374
+R-15,HaVG,2022,"Hausa Visual Genome (P-034, LREC 2022)",Multimodal dataset,Images,"32,923",Open,"32,923 Hausa-English image descriptions - largest vision-language resource.",5.3,https://ufal.mff.cuni.cz/hausa-visual-genome
+R-16,HaVQA,2023,"HaVQA (P-035, Findings of ACL 2023)",VQA dataset,Images,"6,022 QA; 1,555 images",Open,"6,022 VQA pairs over 1,555 images - multimodal QA resource.",5.3,https://github.com/shantipriyap/HausaVQA/
+R-17,Hausa 47-hour speech dataset,2022,Data in Brief 10.1016/j.dib.2022.107820 (2022),Speech corpus,Speech,47 hours,Open,47 h read speech - supervised ASR/TTS core.,5.2,https://doi.org/10.1016/j.dib.2022.107820
+R-18,Mozilla Common Voice Hausa,2021,Hausa first released in Common Voice in 2021,Speech corpus,Read speech,Release dependent,Open,Crowdsourced Hausa recordings (release-dependent) - community speech source.,5.2,https://commonvoice.mozilla.org/en/datasets
+R-19,BibleTTS Hausa,2022,"BibleTTS (P-039, Interspeech 2022)",Speech/TTS corpus,Religious,Up to ~80 hours,Open,Up to ~80 h high-fidelity religious speech - TTS resource.,5.2,http://www.openslr.org/129/
+R-20,FLEURS Hausa,2022,FLEURS (arXiv 2022; IEEE SLT 2023),Speech benchmark,Read speech,Release dependent,Open,Hausa speech evaluation subset - benchmark layer.,5.2,https://huggingface.co/datasets/google/fleurs
+R-21,TWB Voice 1.0 Hausa,2024,"TWB Voice 1.0 dataset card (CLEAR Global, 2024)",Speech corpus,Speech,"~58h; 36,665 recordings",Open,"~58 h / 36,665 recordings - humanitarian-domain speech data.",5.2,https://mozilladatacollective.com/datasets/cmp74k47s02u2mp07zr9zwhpt
+R-22,Ajami_Hausa_OCR,2025,Hugging Face dataset; derived from IntelligenceResearchLab Ajami collection (2025 or later),OCR dataset,Ajami,See dataset card,Open,Ajami OCR images/transcriptions - script-revival data (G1).,"5.3, 9",https://huggingface.co/datasets/Sobanane/Ajami_Hausa_OCR
+R-23,Hausa-OCR-AJAMI-v11,2026,"Hugging Face model card, versioned v11-20261015",OCR model,Ajami,See model card,Open,Ajami OCR model checkpoint - deployable script technology.,5.3,https://huggingface.co/IntelligenceResearchLab/Hausa-OCR-AJAMI-v11
+R-24,CIRAL Hausa,2024,"CIRAL (P-008, 2024)",CLIR benchmark,News/blogs,See paper,Open,Hausa CLIR test collection - retrieval evaluation core (G8).,"6.8, 9",https://github.com/castorini/CIRAL
+R-25,Belebele Hausa,2024,"Belebele (P-012, ACL 2024)",Reading-comprehension benchmark,Multi-domain,Hausa variant,Open,Hausa MRC questions/passages - NLU benchmark layer.,6.6,https://huggingface.co/datasets/facebook/belebele
+R-26,AfriXNLI Hausa,2025,"IrokoBench (P-013, NAACL 2025)",NLI benchmark,Multi-domain,Hausa subset,Open,Hausa NLI subset - reasoning evaluation.,6.6,https://github.com/masakhane-io/irokobench
+R-27,AfriMGSM Hausa,2025,"IrokoBench (P-013, NAACL 2025)",Math reasoning benchmark,Math,Hausa subset,Open,Hausa math questions - reasoning frontier.,6.6,https://github.com/masakhane-io/irokobench
+R-28,AfriMMLU Hausa,2025,"IrokoBench (P-013, NAACL 2025)",Knowledge QA benchmark,Multi-domain,Hausa subset,Open,Hausa MCQ knowledge evaluation - knowledge benchmark.,6.6,https://github.com/masakhane-io/irokobench
+R-29,AfriMTEB Hausa,2026,"AfriMTEB (P-016, 2026)",Embedding benchmark,Multi-domain,Hausa suite,Open,Hausa-inclusive embedding tasks - retrieval-adjacent evaluation.,6.6,https://github.com/masakhane-io/afri-mteb
+R-30,hauWE vectors,2019,"hauWE (P-021, arXiv:1911.10708, 2019)",Embedding model,General text,See paper,Open,Static Hausa vectors - baseline embeddings.,5.1,https://arxiv.org/abs/1911.10708
+R-31,AfroXLMR,2022,AfroXLMR introduced in P-094 (COLING 2022),Model,General NLP,Model card,Open,African multilingual encoder used across Hausa systems - F2 backbone.,"6.2, 7",https://huggingface.co/Davlan/afro-xlmr-base
+R-32,InkubaLM,2024,"InkubaLM (P-100, 2024)",LLM,General NLP,0.4B model,Open,0.4B African LM with Hausa evaluations - small-model line.,6.6,https://huggingface.co/lelapa/InkubaLM-0.4B
+R-33,AfriCOMET,2024,"AfriCOMET (P-028, NAACL 2024)",MT metric,MT,See paper,Open,African MT metric - metric validity (F3).,"6.1, 7",https://aclanthology.org/2024.naacl-long.334.pdf
+R-34,Hausa Speech Corpus,2021,"Mendeley Data 10.17632/j6kjmfrbby.1, published 1 Nov 2021",Speech corpus,Speech,See dataset record,Open,Baseline Hausa ASR recordings - speech data record.,5.2,https://data.mendeley.com/datasets/j6kjmfrbby
+R-35,NaijaVoices,2025,"NaijaVoices (P-127, 2025)",Speech corpus,Speech,"1,800 hours; 5,000+ speakers; Hausa/Igbo/Yoruba",Open,"1,800 h / 5,000+ speakers incl. Hausa - the G2 scale target.","5.2, 9",https://huggingface.co/datasets/naijavoices/naijavoices-dataset
+R-36,Hausa-TTS-Dataset,2025,Mozilla Data Collective listing (platform launched 2025),TTS corpus,TTS,19 folders; clip duration 1–23 seconds,Open,Hausa TTS clips (1-23 s) - synthesis data.,5.2,https://mozilladatacollective.com/datasets/cmnopto3q00t0mf07v2dtc0ej
+R-37,CLEAR Global Hausa synthetic voice resources,2025,CLEAR Global resource page (2025),Resource collection,ASR / TTS,See collection page,Open,Hausa TTS/ASR models + synthetic voice data - synthetic pipeline (F1).,"5.2, 7",https://clearglobal.org/resources/hausa-synthetic-voice-dataset-tts-models-asr-models/
+R-38,WAXAL,2026,"WAXAL (P-046, arXiv:2602.02734, 2026)",Speech corpus,ASR / TTS,See paper/dataset,Open,Multilingual speech corpus with Hausa ASR/TTS components.,5.2,https://arxiv.org/abs/2602.02734
+R-39,AfriCOMET-QE,2024,"AfriCOMET-QE, WMT 2024 (2024.wmt-1.36)",MT quality-estimation metric,Machine translation,See paper,Open,Reference-free African MT quality estimation - QE infrastructure.,6.1,https://aclanthology.org/2024.wmt-1.36.pdf
+R-40,SSA-MTE African Challenge Set,2025,"SSA-MTE challenge set, WMT 2025 (2025.wmt-1.65; P-031)",MT challenge set,Machine translation,See paper,Open,African MT metric challenge set incl. Hausa-relevant data.,6.1,https://aclanthology.org/2025.wmt-1.65.pdf
+R-41,OpenBibleTTS,2026,"OpenBibleTTS (P-045, arXiv:2606.09553, 2026)",TTS dataset/model resource,TTS,See paper,Open preprint,Expanded African TTS resources incl. Hausa - TTS scale-up.,5.2,https://arxiv.org/html/2606.09553v1
